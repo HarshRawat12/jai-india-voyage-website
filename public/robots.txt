@@ -1,0 +1,52 @@
+# ==========================================================
+# ROBOTS.TXT FOR JAI INDIA VOYAGE
+# Optimized for standard Search Engines and AI Search Bots
+# ==========================================================
+
+# 1. Global Rule for Search Engines & AI Bots
+User-agent: *
+Allow: /
+
+# 2. Explicitly Allow Major AI Search engine Crawlers & LLM agents
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Anthropic-ai
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# 3. Block aggressive SEO scraper bots that consume bandwidth without benefit
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: Rogerbot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap Location
+Sitemap: https://www.jaiindiavoyage.com/sitemap.xml
