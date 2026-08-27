@@ -8,7 +8,7 @@ const EXPERIENCES = [
     tag: 'Heritage',
     title: 'Royal Palace Stays',
     desc: 'Sleep like royalty in converted heritage havelis and maharaja palaces. Private dinners, cultural performances, and behind-the-scenes access to centuries-old estates.',
-    image: '/images/Dinner-at-ALSISAR-MAHAL.jpg',
+    image: '/images/royal_palace_stays.jpg',
   },
   {
     tag: 'Cultural',
@@ -20,7 +20,7 @@ const EXPERIENCES = [
     tag: 'Adventure',
     title: 'Desert Camping',
     desc: 'Experience the magic of the Thar Desert — camel safaris at sunset, star-gazing from luxury tented camps, and folk music under a blanket of stars in Jaisalmer.',
-    image: '/images/Sam-sand-dunes-jaisalmer.jpg',
+    image: '/images/desert_camping.jpg',
   },
   {
     tag: 'Spiritual',
@@ -44,7 +44,7 @@ const EXPERIENCES = [
     tag: 'Cultural',
     title: 'Cuisine & Cooking Classes',
     desc: 'Savor India\'s incredible culinary diversity. Join private cooking sessions with local chefs, explore spice markets, and dine at hidden local gems.',
-    image: '/images/img6.jpg',
+    image: '/images/cuisine_cooking_classes.jpg',
   },
   {
     tag: 'Adventure',

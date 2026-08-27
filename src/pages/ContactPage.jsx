@@ -51,7 +51,7 @@ export default function ContactPage() {
                 </p>
 
                 <form onSubmit={handleSubmit}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div className="form-row">
                     <div className="form-group">
                       <label htmlFor="name">Full Name *</label>
                       <input type="text" id="name" name="name" required placeholder="Your name" value={formData.name} onChange={handleChange} />
@@ -62,7 +62,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div className="form-row">
                     <div className="form-group">
                       <label htmlFor="phone">Phone / WhatsApp</label>
                       <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900" value={formData.phone} onChange={handleChange} />
@@ -110,43 +110,35 @@ export default function ContactPage() {
             {/* Contact Info Sidebar */}
             <ScrollReveal direction="right">
               <div>
-                <div style={{
-                  background: 'var(--color-primary-dark)',
-                  borderRadius: 'var(--border-radius-lg)',
-                  padding: '2rem',
-                  color: 'white',
-                  marginBottom: '1.5rem',
-                }}>
-                  <h3 style={{ color: 'var(--color-secondary)', marginBottom: '1.5rem', fontSize: '1.3rem' }}>
-                    Contact Information
-                  </h3>
+                <div className="contact-panel">
+                  <h3 className="contact-panel__heading">Contact Information</h3>
 
-                  <div style={{ marginBottom: '1.5rem' }}>
-                    <p style={{ color: 'var(--color-secondary)', fontSize: '0.75rem', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.3rem' }}>Address</p>
-                    <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                  <div className="contact-panel__item">
+                    <p className="contact-panel__label">Address</p>
+                    <p className="contact-panel__value">
                       Jai India Voyage Pvt. Ltd.<br />
                       Sector 53, Gurugram<br />
                       Haryana 122002, India
                     </p>
                   </div>
 
-                  <div style={{ marginBottom: '1.5rem' }}>
-                    <p style={{ color: 'var(--color-secondary)', fontSize: '0.75rem', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.3rem' }}>Phone</p>
-                    <a href="tel:+919810082757" style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.05rem' }}>+91-98100 82757</a>
+                  <div className="contact-panel__item">
+                    <p className="contact-panel__label">Phone</p>
+                    <a href="tel:+919810082757" className="contact-panel__value">+91-98100 82757</a>
                   </div>
 
-                  <div style={{ marginBottom: '1.5rem' }}>
-                    <p style={{ color: 'var(--color-secondary)', fontSize: '0.75rem', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.3rem' }}>Email</p>
-                    <a href="mailto:ashish@jaiindiavoyage.com" style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem' }}>ashish@jaiindiavoyage.com</a>
+                  <div className="contact-panel__item">
+                    <p className="contact-panel__label">Email</p>
+                    <a href="mailto:ashish@jaiindiavoyage.com" className="contact-panel__value">ashish@jaiindiavoyage.com</a>
                   </div>
 
-                  <div>
-                    <p style={{ color: 'var(--color-secondary)', fontSize: '0.75rem', fontWeight: '600', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.3rem' }}>WhatsApp</p>
+                  <div className="contact-panel__item">
+                    <p className="contact-panel__label">WhatsApp</p>
                     <a
                       href="https://api.whatsapp.com/send?phone=919810082757"
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ color: '#25D366', fontSize: '0.95rem', fontWeight: '600' }}
+                      className="contact-panel__value contact-panel__value--whatsapp"
                     >
                       Chat with us on WhatsApp →
                     </a>
@@ -154,30 +146,20 @@ export default function ContactPage() {
                 </div>
 
                 {/* Quick Stats */}
-                <div style={{
-                  background: '#F2EDE4',
-                  borderRadius: 'var(--border-radius-lg)',
-                  padding: '2rem',
-                  textAlign: 'center',
-                }}>
-                  <h4 style={{ marginBottom: '1rem' }}>Why Contact Us?</h4>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                    <div>
-                      <p style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: '800', color: 'var(--color-secondary-dark)', lineHeight: '1' }}>24hr</p>
-                      <p style={{ fontSize: '0.75rem', color: 'var(--color-text-light)' }}>Response Time</p>
-                    </div>
-                    <div>
-                      <p style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: '800', color: 'var(--color-secondary-dark)', lineHeight: '1' }}>100%</p>
-                      <p style={{ fontSize: '0.75rem', color: 'var(--color-text-light)' }}>Custom Tours</p>
-                    </div>
-                    <div>
-                      <p style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: '800', color: 'var(--color-secondary-dark)', lineHeight: '1' }}>25+</p>
-                      <p style={{ fontSize: '0.75rem', color: 'var(--color-text-light)' }}>Years Experience</p>
-                    </div>
-                    <div>
-                      <p style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: '800', color: 'var(--color-secondary-dark)', lineHeight: '1' }}>5000+</p>
-                      <p style={{ fontSize: '0.75rem', color: 'var(--color-text-light)' }}>Happy Travelers</p>
-                    </div>
+                <div className="contact-stats">
+                  <h4 className="contact-stats__heading">Why Contact Us?</h4>
+                  <div className="contact-stats__grid">
+                    {[
+                      { number: '24hr', label: 'Response Time' },
+                      { number: '100%', label: 'Custom Tours' },
+                      { number: '25+', label: 'Years Experience' },
+                      { number: '5000+', label: 'Happy Travelers' },
+                    ].map((stat) => (
+                      <div key={stat.label}>
+                        <p className="contact-stats__number">{stat.number}</p>
+                        <p className="contact-stats__label">{stat.label}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>

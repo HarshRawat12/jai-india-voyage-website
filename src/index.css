@@ -212,6 +212,18 @@ p {
   color: rgba(243, 244, 246, 0.6);
 }
 
+/* A divider closing a header already supplies breathing room, so it drops its
+   own bottom margin and lets .section-header own the gap to the next block. */
+.section-header > .gold-divider:last-child {
+  margin-bottom: 0;
+}
+
+/* A single centred action closing a section (e.g. "View All Destinations") */
+.section-action {
+  margin-top: var(--space-2xl);
+  text-align: center;
+}
+
 /* ── Gold Divider ── */
 .gold-divider {
   display: flex;
@@ -318,7 +330,6 @@ p {
   display: flex;
   align-items: center;
   transition: all var(--transition-normal);
-  padding: 0 var(--space-xl);
 }
 
 .navbar--transparent {
@@ -331,6 +342,9 @@ p {
   box-shadow: 0 2px 20px rgba(0,0,0,0.15);
 }
 
+/* Mirrors .container exactly (same max-width AND same inner padding) so the
+   logo lines up with every heading and card below it. Padding used to sit on
+   .navbar itself, which pushed the bar's content 32px wider than the page. */
 .navbar__inner {
   display: flex;
   align-items: center;
@@ -338,6 +352,7 @@ p {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
+  padding: 0 var(--space-xl);
 }
 
 .navbar__logo {
@@ -589,16 +604,16 @@ p {
   aspect-ratio: 4/5;
   cursor: pointer;
   box-shadow: var(--shadow-md);
-  transition: transform var(--transition-normal), border-radius var(--transition-slow), box-shadow var(--transition-normal);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .dest-card:hover {
   transform: translateY(-6px);
-  border-radius: 60px 60px var(--border-radius-lg) var(--border-radius-lg); /* Elegant Rajput Arch morph */
   box-shadow: var(--shadow-xl);
 }
 
 .dest-card__img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -717,7 +732,6 @@ p {
 }
 
 .feature-card:hover .feature-card__icon {
-  border-radius: 50% 50% 12% 12%; /* Rajput Arch Morph! */
   transform: scale(1.05);
   animation: diya-glow 2s infinite var(--ease-smooth);
 }
@@ -730,133 +744,581 @@ p {
   font-size: 0.9rem;
 }
 
-/* ═══════════════════════════════════════════════
-   TESTIMONIAL CAROUSEL
-   ═══════════════════════════════════════════════ */
-.testimonials {
+.csr-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+}
+
+/* CSR cards reuse .feature-card but sit on the dark section, so they swap the
+   white surface for a translucent one. Text colours come from .section--dark. */
+.feature-card--csr {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.csr-card__avatar {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--space-lg);
+  border-radius: 50%;
   overflow: hidden;
-  position: relative;
+  flex-shrink: 0;
 }
 
-.testimonials__track {
-  display: flex;
-  transition: transform 0.6s ease;
-}
-
-.testimonial-card {
-  flex: 0 0 100%;
+.csr-card__avatar img {
+  display: block;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Collapse handled in the RESPONSIVE section (1024px → 2 cols, 768px → 1 col)
+   so every card grid on the site breaks at the same widths. */
+
+/* ═══════════════════════════════════════════════
+   VERIFIED REVIEW MARQUEE — infinite horizontal scroll
+   ═══════════════════════════════════════════════ */
+.review-marquee {
+  --review-card-w: 370px;
+  --review-gap: 1.75rem;
+  --review-duration: 95s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft edges so cards fade in and out instead of being cut off */
+.review-marquee__viewport {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+
+.review-marquee__track {
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+  animation: review-marquee-scroll var(--review-duration) linear infinite;
+  will-change: transform;
+}
+
+@keyframes review-marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Pause so a reader can finish a quote or click through to the source */
+.review-marquee:hover .review-marquee__track,
+.review-marquee:focus-within .review-marquee__track {
+  animation-play-state: paused;
+}
+
+/* display:contents drops the duplicated set straight into the flex track, so
+   translating -50% advances by exactly one full set — a seamless loop. */
+.review-marquee__clone {
+  display: contents;
+}
+
+.review-card {
+  flex: 0 0 var(--review-card-w);
+  width: var(--review-card-w);
+  /* Spacing via margin, not gap — gap would leave -50% half a gap off. */
+  margin-right: var(--review-gap);
   display: flex;
   flex-direction: column;
+  padding: var(--space-xl);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  text-align: left;
+  white-space: normal;
+}
+
+.review-card__source {
+  display: inline-flex;
   align-items: center;
-  text-align: center;
-  padding: var(--space-2xl) calc((100% - 700px) / 2);
-}
-
-@media (max-width: 768px) {
-  .testimonial-card {
-    padding: var(--space-xl) var(--space-md);
-  }
-}
-
-.testimonial-card__quote {
-  font-family: var(--font-accent);
-  font-size: 1.35rem;
-  font-style: italic;
-  line-height: 1.7;
-  color: var(--color-text);
-  margin-bottom: var(--space-xl);
-  position: relative;
-}
-
-.testimonial-card__quote::before {
-  content: '"';
-  font-size: 5rem;
-  font-family: var(--font-heading);
-  color: var(--color-secondary);
-  opacity: 0.3;
-  position: absolute;
-  top: -2rem;
-  left: -1rem;
+  gap: 0.4rem;
+  align-self: flex-start;
+  padding: 0.3rem 0.7rem 0.3rem 0.4rem;
+  margin-bottom: var(--space-md);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+  background: rgba(52, 224, 161, 0.16);
+  border: 1px solid rgba(52, 224, 161, 0.5);
+  border-radius: 50px;
   line-height: 1;
 }
 
-.section--dark .testimonial-card__quote {
-  color: var(--color-text-inverse);
+.review-card__source-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
-.testimonial-card__author {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--color-primary-dark);
+.review-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+  /* Two lines keeps every card's header block the same height */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.section--dark .testimonial-card__author {
-  color: var(--color-secondary);
+.review-card__quote {
+  flex: 1 1 auto;
+  font-family: var(--font-accent);
+  font-size: 1.02rem;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--color-text);
+  margin-bottom: var(--space-lg);
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.testimonial-card__origin {
-  font-size: 0.8rem;
-  color: var(--color-text-light);
+.review-card__photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-bottom: var(--space-lg);
 }
 
-.testimonials__dots {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-sm);
-  margin-top: var(--space-xl);
-}
-
-.testimonials__dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--color-border);
-  transition: all var(--transition-fast);
+.review-card__photo-btn {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background: var(--color-light);
+  border: none;
+  padding: 0;
   cursor: pointer;
+  display: block;
+  width: 100%;
+  text-align: left;
+  outline-offset: 2px;
 }
 
-.testimonials__dot--active {
+.review-card__photo-btn:focus-visible {
+  outline: 2px solid var(--color-secondary);
+}
+
+.review-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.review-card__photo-btn:hover .review-card__photo {
+  transform: scale(1.08);
+}
+
+.review-card__photo-zoom {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 14, 22, 0.45);
+  color: #fff;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  backdrop-filter: blur(2px);
+}
+
+.review-card__photo-btn:hover .review-card__photo-zoom,
+.review-card__photo-btn:focus-visible .review-card__photo-zoom {
+  opacity: 1;
+}
+
+.review-card__photo-zoom svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  transform: scale(0.9);
+  transition: transform var(--transition-fast);
+}
+
+.review-card__photo-btn:hover .review-card__photo-zoom svg {
+  transform: scale(1.1);
+}
+
+.review-card__photo-badge {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: rgba(14, 20, 30, 0.88);
+  backdrop-filter: blur(6px);
+  color: var(--color-secondary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 12px;
+  border: 1px solid rgba(200, 169, 110, 0.4);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════
+   REVIEW PHOTO LIGHTBOX MODAL
+   ═══════════════════════════════════════════════ */
+.review-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+}
+
+.review-lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 9, 15, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: fadeIn 0.25s ease;
+}
+
+.review-lightbox__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.review-lightbox__close:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: scale(1.08);
+}
+
+.review-lightbox__container {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  width: 100%;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  background: #111722;
+  border: 1px solid rgba(200, 169, 110, 0.4);
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(200, 169, 110, 0.2);
+  overflow: hidden;
+  animation: modalScaleIn 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.review-lightbox__stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #080b11;
+  padding: var(--space-md);
+  user-select: none;
+}
+
+.review-lightbox__img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #05080e;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.review-lightbox__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: fadeIn 0.2s ease;
+}
+
+.review-lightbox__counter {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(10, 14, 22, 0.8);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 11px;
+  border-radius: 15px;
+  border: 1px solid rgba(200, 169, 110, 0.3);
+  letter-spacing: 0.04em;
+}
+
+.review-lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(17, 23, 34, 0.85);
+  backdrop-filter: blur(8px);
+  color: var(--color-secondary);
+  border: 1px solid rgba(200, 169, 110, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.review-lightbox__nav--prev {
+  left: 12px;
+}
+
+.review-lightbox__nav--next {
+  right: 12px;
+}
+
+.review-lightbox__nav:hover {
   background: var(--color-secondary);
-  width: 28px;
-  border-radius: 5px;
+  color: #0b0f17;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 16px rgba(200, 169, 110, 0.5);
+}
+
+.review-lightbox__details {
+  padding: var(--space-md) var(--space-lg);
+  background: #111722;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.review-lightbox__info {
+  flex: 1 1 280px;
+  min-width: 0;
+}
+
+.review-lightbox__author-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.review-lightbox__author-row .review-card__source {
+  margin-bottom: 0;
+}
+
+.review-lightbox__author-name {
+  color: var(--color-secondary);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.review-lightbox__date {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.78rem;
+}
+
+.review-lightbox__title {
+  color: #fff;
+  font-size: 1.05rem;
+  font-family: var(--font-heading);
+  line-height: 1.35;
+  margin: 0 0 0.4rem;
+}
+
+.review-lightbox__quote {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.82rem;
+  font-style: italic;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.review-lightbox__cta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 600px) {
+  .review-lightbox__container {
+    max-height: 95vh;
+  }
+  .review-lightbox__stage {
+    min-height: 240px;
+    max-height: 52vh;
+    padding: var(--space-xs);
+  }
+  .review-lightbox__image {
+    max-height: 48vh;
+  }
+  .review-lightbox__nav {
+    width: 38px;
+    height: 38px;
+  }
+  .review-lightbox__nav--prev {
+    left: 6px;
+  }
+  .review-lightbox__nav--next {
+    right: 6px;
+  }
+  .review-lightbox__details {
+    padding: var(--space-sm) var(--space-md);
+  }
+  .review-lightbox__cta {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+.review-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.review-card__author {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-secondary-dark);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(168, 139, 74, 0.45);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.review-card__author:hover,
+.review-card__author:focus-visible {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.review-card__ext {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+
+.review-card__date {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  color: var(--color-text-light);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .review-marquee {
+    --review-card-w: 290px;
+    --review-gap: 1rem;
+    --review-duration: 70s;
+  }
+  .review-card {
+    padding: var(--space-lg);
+  }
+}
+
+/* Respect reduced-motion: stop the travel, allow manual swipe instead */
+@media (prefers-reduced-motion: reduce) {
+  .review-marquee__track {
+    animation: none;
+  }
+  .review-marquee__viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .review-card {
+    scroll-snap-align: center;
+  }
 }
 
 /* ═══════════════════════════════════════════════
    TRUST BAR
    ═══════════════════════════════════════════════ */
+/* Stats and accreditation logos are different kinds of content with different
+   heights, so they get their own rows instead of sharing one flex line — that
+   way the four numbers land on a single baseline in equal-width columns. */
 .trust-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-3xl);
-  flex-wrap: wrap;
-  padding: var(--space-2xl) 0;
-}
-
-.trust-bar__item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-2xl);
+  padding: var(--space-2xl) 0;
 }
 
-.trust-bar__item img {
-  height: 50px;
-  width: auto;
-  object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.6;
-  transition: all var(--transition-normal);
-}
-
-.trust-bar__item:hover img {
-  filter: grayscale(0%);
-  opacity: 1;
+.trust-bar__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  max-width: 900px;
 }
 
 .trust-bar__stat {
   text-align: center;
+  padding: 0 var(--space-md);
+}
+
+.trust-bar__stat + .trust-bar__stat {
+  border-left: 1px solid var(--color-border);
 }
 
 .trust-bar__number {
@@ -873,11 +1335,103 @@ p {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-text-light);
-  margin-top: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+
+.trust-bar__logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3xl);
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 900px;
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.trust-bar__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fixed height + contain keeps both logos optically the same size
+   regardless of their differing source aspect ratios */
+.trust-bar__item img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all var(--transition-normal);
+}
+
+.trust-bar__item:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
 }
 
 .section--dark .trust-bar__label {
   color: rgba(255,255,255,0.5);
+}
+
+.section--dark .trust-bar__stat + .trust-bar__stat,
+.section--dark .trust-bar__logos {
+  border-color: rgba(255,255,255,0.12);
+}
+
+@media (max-width: 768px) {
+  .trust-bar__stats {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: var(--space-xl);
+  }
+  /* With two columns only the 2nd and 4th sit to the right of a sibling */
+  .trust-bar__stat:nth-child(odd) {
+    border-left: none;
+  }
+  .trust-bar__number {
+    font-size: 2rem;
+  }
+  .trust-bar__logos {
+    gap: var(--space-xl);
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   CENTRED NARRATIVE BLOCK
+   Shared by the home intro and the About story so both read with the
+   same measure and rhythm instead of two sets of inline values.
+   ═══════════════════════════════════════════════ */
+.prose-center {
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+/* The global `p` rule sets a lighter colour and would win over an inherited
+   one, so body copy here opts back in to the darker text colour. */
+.prose-center > p {
+  font-size: inherit;
+  line-height: inherit;
+  color: var(--color-text);
+}
+
+/* Adjacent-sibling rhythm rather than a margin on every paragraph, so the
+   block ends flush with the section padding instead of adding a stray gap. */
+.prose-center > p + p {
+  margin-top: var(--space-lg);
+}
+
+.prose-center__closing {
+  font-weight: 500;
+  color: var(--color-primary-dark);
+}
+
+.prose-center__closing--italic {
+  font-style: italic;
 }
 
 /* ═══════════════════════════════════════════════
@@ -885,54 +1439,131 @@ p {
    ═══════════════════════════════════════════════ */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--space-2xl);
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+  align-items: stretch;
+}
+
+/* ScrollReveal wrapper must pass full row height down to the card */
+.team-grid__cell {
+  display: flex;
+  min-width: 0;
 }
 
 .team-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
   text-align: center;
-  padding: var(--space-2xl);
+  padding: var(--space-2xl) var(--space-lg);
   background: var(--color-white);
   border-radius: var(--border-radius-lg);
   border: 1px solid var(--color-border);
-  transition: all var(--transition-normal);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
 }
 
 .team-card:hover {
   box-shadow: var(--shadow-lg);
+  border-color: var(--color-secondary);
   transform: translateY(-4px);
 }
 
-.team-card__photo {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
+/* Arched portrait frame — identical geometry whether it holds a photo or a monogram */
+.team-card__frame {
+  width: 100%;
+  max-width: 170px;
+  aspect-ratio: 4 / 5;
   margin: 0 auto var(--space-lg);
-  border: 4px solid var(--color-secondary);
-  box-shadow: 0 4px 15px rgba(200, 169, 110, 0.3);
+  border-radius: 85px 85px var(--border-radius) var(--border-radius);
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(150deg, #F7F1E4 0%, #E9DDC6 100%);
+  border: 1px solid var(--color-secondary);
+  box-shadow: 0 8px 22px rgba(200, 169, 110, 0.22);
+}
+
+.team-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  display: block;
+}
+
+.team-card__monogram {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: linear-gradient(135deg, #D4B87C 0%, #A8863F 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+}
+
+/* Body grows so every card ends at the same height regardless of bio length */
+.team-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .team-card__name {
   font-family: var(--font-heading);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: var(--space-xs);
 }
 
 .team-card__role {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.team-card__tag {
+  display: inline-block;
+  align-self: center;
+  padding: 0.3rem 0.75rem;
   margin-bottom: var(--space-md);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-primary-dark);
+  background: rgba(200, 169, 110, 0.14);
+  border: 1px solid rgba(200, 169, 110, 0.35);
+  border-radius: 50px;
+  line-height: 1.4;
 }
 
 .team-card__bio {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--color-text-light);
-  line-height: 1.7;
+  line-height: 1.75;
+  text-align: left;
+}
+
+@media (max-width: 1180px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  .team-card__bio {
+    text-align: center;
+  }
 }
 
 /* ═══════════════════════════════════════════════
@@ -1011,6 +1642,7 @@ p {
 }
 
 .cta-banner__bg img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1026,6 +1658,12 @@ p {
 .cta-banner__content {
   position: relative;
   z-index: 2;
+}
+
+/* The banner sits on a dark image rather than .section--dark, so it needs its
+   own label colour — the default accent orange has no contrast here. */
+.cta-banner .section-label {
+  color: var(--color-secondary);
 }
 
 .cta-banner h2 {
@@ -1217,6 +1855,7 @@ p {
 }
 
 .gallery-item img {
+  display: block;
   width: 100%;
   transition: transform var(--transition-slow);
 }
@@ -1255,8 +1894,10 @@ p {
 }
 
 .lightbox img {
+  display: block;
   max-width: 90%;
   max-height: 85vh;
+  margin: 0 auto;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-xl);
 }
@@ -1297,6 +1938,28 @@ p {
   align-items: start;
 }
 
+@media (max-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+}
+
+/* Paired fields (name+email, phone+travelers). Collapses to one column so the
+   inputs never get too narrow to read their own placeholder. */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
 .form-group {
   margin-bottom: var(--space-lg);
 }
@@ -1312,16 +1975,30 @@ p {
 .form-group input,
 .form-group textarea,
 .form-group select {
+  display: block;
   width: 100%;
   padding: 0.85rem 1rem;
   font-family: var(--font-body);
   font-size: 0.95rem;
+  line-height: 1.5;
   color: var(--color-text);
   background: var(--color-white);
   border: 1.5px solid var(--color-border);
   border-radius: var(--border-radius);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
   outline: none;
+}
+
+/* A native select is taller than a text input and its arrow sits inconsistently
+   across browsers, so it's reset and given a matching chevron instead. */
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 2.75rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='1,1.5 7,7.5 13,1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  cursor: pointer;
 }
 
 .form-group input:focus,
@@ -1336,13 +2013,95 @@ p {
   resize: vertical;
 }
 
+/* ── Contact sidebar ── */
+.contact-panel {
+  background: var(--color-primary-dark);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-2xl);
+  color: var(--color-white);
+  margin-bottom: var(--space-lg);
+}
+
+.contact-panel__heading {
+  color: var(--color-secondary);
+  font-size: 1.3rem;
+  margin-bottom: var(--space-xl);
+}
+
+.contact-panel__item + .contact-panel__item {
+  margin-top: var(--space-xl);
+}
+
+.contact-panel__label {
+  color: var(--color-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+.contact-panel__value {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+a.contact-panel__value:hover {
+  color: var(--color-secondary);
+}
+
+.contact-panel__value--whatsapp {
+  color: #25D366;
+  font-weight: 600;
+}
+
+.contact-stats {
+  background: #F2EDE4;
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-2xl);
+  text-align: center;
+}
+
+.contact-stats__heading {
+  margin-bottom: var(--space-xl);
+}
+
+.contact-stats__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl) var(--space-lg);
+}
+
+.contact-stats__number {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-secondary-dark);
+  line-height: 1;
+}
+
+.contact-stats__label {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin-top: var(--space-xs);
+}
+
 /* ═══════════════════════════════════════════════
    EXPERIENCE CARDS
    ═══════════════════════════════════════════════ */
+/* Explicit columns rather than auto-fill, so this grid breaks at exactly the
+   same widths as the destinations / features / blog grids. */
 .exp-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-xl);
+}
+
+@media (max-width: 1024px) {
+  .exp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .exp-card {
@@ -1364,6 +2123,7 @@ p {
 }
 
 .exp-card__img-wrap img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1491,6 +2251,37 @@ p {
 }
 
 /* ═══════════════════════════════════════════════
+   SECTION CTA PANEL (dark card closing a section)
+   ═══════════════════════════════════════════════ */
+.section-cta {
+  margin-top: var(--space-3xl);
+  padding: var(--space-3xl) var(--space-xl);
+  text-align: center;
+  background: var(--color-primary-dark);
+  border-radius: var(--border-radius-lg);
+}
+
+.section-cta__heading {
+  color: var(--color-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.section-cta__text {
+  max-width: 520px;
+  margin: 0 auto var(--space-lg);
+  font-family: var(--font-accent);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+  .section-cta {
+    padding: var(--space-2xl) var(--space-lg);
+  }
+}
+
+/* ═══════════════════════════════════════════════
    SCROLL REVEAL ANIMATION
    ═══════════════════════════════════════════════ */
 .reveal {
@@ -1520,11 +2311,49 @@ p {
   transform: translateX(0);
 }
 
-/* ── CSR Grid ── */
-.csr-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-xl);
+/* ── Grid alignment: let ScrollReveal wrappers pass row height to the card ──
+   ScrollReveal inserts a <div class="reveal"> between the grid and the card.
+   As a grid item it stretches to the row height, but the card inside kept
+   height:auto — so cards in the same row ended at different heights. Making
+   the wrapper a flex container and letting the card flex to fill restores
+   equal-height rows everywhere without touching the reveal animation.       */
+.destinations-grid > .reveal,
+.features-grid > .reveal,
+.csr-grid > .reveal,
+.exp-grid > .reveal,
+.blog-grid > .reveal,
+.team-grid > .reveal {
+  display: flex;
+  min-width: 0;
+}
+
+.destinations-grid > .reveal > *,
+.features-grid > .reveal > *,
+.csr-grid > .reveal > *,
+.exp-grid > .reveal > *,
+.blog-grid > .reveal > *,
+.team-grid > .reveal > * {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Cards that now stretch need internal column flow so their content
+   distributes instead of bunching at the top of a taller box.
+   .dest-card is deliberately excluded — its aspect-ratio: 4/5 already
+   guarantees identical heights, and flex would fight the absolute overlay. */
+.feature-card,
+.exp-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-card__icon,
+.exp-card__img-wrap {
+  flex-shrink: 0;
+}
+
+.exp-card__body {
+  flex: 1 1 auto;
 }
 
 /* ═══════════════════════════════════════════════
@@ -1546,10 +2375,6 @@ p {
     grid-template-columns: 1fr 1fr;
   }
 
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
-
   .gallery-grid {
     columns: 2;
   }
@@ -1563,6 +2388,11 @@ p {
   }
 
   .container {
+    padding: 0 var(--space-md);
+  }
+
+  /* Keep the bar's gutter equal to .container's at this breakpoint too */
+  .navbar__inner {
     padding: 0 var(--space-md);
   }
 
@@ -1594,16 +2424,18 @@ p {
     display: flex;
   }
 
+  /* Hidden in the collapsed bar, shown inside the open drawer — handled here
+     rather than with an inline style so the two states stay in one place. */
   .navbar__cta {
     display: none;
   }
 
-  .hero__title {
-    font-size: clamp(2rem, 8vw, 3rem);
+  .navbar__links--open .navbar__cta {
+    display: inline-flex;
   }
 
-  .destinations-grid {
-    grid-template-columns: 1fr;
+  .hero__title {
+    font-size: clamp(2rem, 8vw, 3rem);
   }
 
   .dest-card {
@@ -1615,10 +2447,6 @@ p {
     grid-template-columns: 1fr;
   }
 
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
-
   .footer__grid {
     grid-template-columns: 1fr;
     gap: var(--space-2xl);
@@ -1627,10 +2455,6 @@ p {
   .footer__bottom {
     flex-direction: column;
     text-align: center;
-  }
-
-  .trust-bar {
-    gap: var(--space-xl);
   }
 
   .gallery-grid {
@@ -1650,14 +2474,109 @@ p {
 /* ═══════════════════════════════════════════════
    BLOG PAGE
    ═══════════════════════════════════════════════ */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  margin-top: var(--space-2xl);
+  align-items: stretch;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal),
+              box-shadow var(--transition-normal),
+              border-color var(--transition-normal);
+}
+
 .blog-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--color-secondary) !important;
+  border-color: var(--color-secondary);
+}
+
+.blog-card__image-wrap {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-primary-dark);
+  flex-shrink: 0;
+}
+
+.blog-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-slow);
 }
 
 .blog-card:hover .blog-card__img {
   transform: scale(1.05);
+}
+
+.blog-card__category {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+}
+
+.blog-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: var(--space-lg);
+}
+
+.blog-card__meta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin-bottom: var(--space-sm);
+}
+
+.blog-card__title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin-bottom: var(--space-md);
+}
+
+/* Clamped to 3 lines so every card's button lands on the same baseline */
+.blog-card__summary {
+  flex: 1 1 auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text-light);
+  margin-bottom: var(--space-lg);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-card__cta {
+  margin-top: auto;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  font-size: 0.8rem;
 }
 
 .blog-detail-body p {
@@ -1679,13 +2598,13 @@ p {
 
 @media (max-width: 1024px) {
   .blog-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .blog-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
   }
 }
 

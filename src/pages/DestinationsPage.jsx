@@ -63,16 +63,13 @@ export default function DestinationsPage() {
           </ScrollReveal>
 
           <div className="destinations-grid">
-            {filtered.map((dest, i) => (
-              <ScrollReveal key={dest.name + i}>
+            {filtered.map((dest) => (
+              <ScrollReveal key={dest.name}>
                 <div className="dest-card">
                   <img className="dest-card__img" src={dest.image} alt={dest.name} loading="lazy" />
                   <div className="dest-card__overlay">
                     <span className="dest-card__region">{dest.region}</span>
                     <h3 className="dest-card__name">{dest.name}</h3>
-                    <div className="dest-card__meta">
-                      <span>🕐 {dest.duration}</span>
-                    </div>
                     <p className="dest-card__desc">{dest.desc}</p>
                   </div>
                 </div>
@@ -82,18 +79,11 @@ export default function DestinationsPage() {
 
           {/* Custom Trip CTA */}
           <ScrollReveal>
-            <div style={{
-              textAlign: 'center',
-              marginTop: 'var(--space-3xl)',
-              padding: 'var(--space-3xl) var(--space-xl)',
-              background: 'var(--color-primary-dark)',
-              borderRadius: 'var(--border-radius-lg)',
-              color: 'white',
-            }}>
-              <h3 style={{ color: 'var(--color-secondary)', marginBottom: '0.5rem' }}>
+            <div className="section-cta">
+              <h3 className="section-cta__heading">
                 Don't See Your Dream Destination?
               </h3>
-              <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '1.5rem', fontFamily: 'var(--font-accent)', fontSize: '1.1rem', fontStyle: 'italic' }}>
+              <p className="section-cta__text">
                 We specialize in crafting bespoke itineraries. Tell us your dream, and we'll make it reality.
               </p>
               <Link to="/contact" className="btn btn--gold">

@@ -8,7 +8,6 @@ const NAV_LINKS = [
   { path: '/about', label: 'About Us' },
   { path: '/gallery', label: 'Gallery' },
   { path: '/blog', label: 'Blog' },
-  { path: '/contact', label: 'Contact' },
 ];
 
 export default function Navbar() {
@@ -32,11 +31,8 @@ export default function Navbar() {
       <div className="navbar__inner">
         {/* Logo */}
         <Link to="/" className="navbar__logo">
-          <img src="/images/logo5.png" alt="Jai India Voyage" />
-          <div className="navbar__logo-text">
-            <span className="navbar__brand">Jai India Voyage</span>
-            <span className="navbar__tagline">Destination Management Company</span>
-          </div>
+          <img src="/images/logo_white.png" alt="Jai India Voyage" />
+          <span className="navbar__brand">Jai India Voyage</span>
         </Link>
 
         {/* Desktop Links */}
@@ -50,7 +46,7 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
-          <Link to="/contact" className="btn btn--gold navbar__cta" style={{ display: isMobileOpen ? 'inline-flex' : undefined }}>
+          <Link to="/contact" className="btn btn--gold navbar__cta">
             Get a Quote
           </Link>
         </div>

@@ -253,102 +253,33 @@ export default function BlogPage() {
           </ScrollReveal>
 
           {/* Blog Grid */}
-          <div className="blog-grid" style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: 'var(--space-xl)',
-            marginTop: 'var(--space-2xl)'
-          }}>
+          <div className="blog-grid">
             {BLOG_POSTS.map((post, i) => (
               <ScrollReveal key={post.id} delay={i * 100}>
-                <div className="blog-card" style={{
-                  background: 'var(--color-white)',
-                  borderRadius: 'var(--border-radius-lg)',
-                  overflow: 'hidden',
-                  border: '1px solid var(--color-border)',
-                  boxShadow: 'var(--shadow-sm)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  height: '100%',
-                  transition: 'all var(--transition-normal)'
-                }}>
-                  <div className="blog-card__image-wrap" style={{
-                    position: 'relative',
-                    aspectRatio: '16/10',
-                    overflow: 'hidden',
-                    background: 'var(--color-primary-dark)'
-                  }}>
-                    <img src={post.image} alt={post.title} style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      transition: 'transform var(--transition-slow)'
-                    }} className="blog-card__img" />
-                    <span style={{
-                      position: 'absolute',
-                      top: '12px',
-                      left: '12px',
-                      background: 'var(--color-accent)',
-                      color: 'white',
-                      fontSize: '0.75rem',
-                      fontWeight: '600',
-                      textTransform: 'uppercase',
-                      padding: '0.25rem 0.75rem',
-                      borderRadius: '50px',
-                      letterSpacing: '0.05em'
-                    }}>{post.category}</span>
+                <article className="blog-card">
+                  <div className="blog-card__image-wrap">
+                    <img className="blog-card__img" src={post.image} alt={post.title} loading="lazy" />
+                    <span className="blog-card__category">{post.category}</span>
                   </div>
 
-                  <div className="blog-card__body" style={{
-                    padding: '1.5rem',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    flexGrow: 1
-                  }}>
-                    <div style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      fontSize: '0.75rem',
-                      color: 'var(--color-text-light)',
-                      marginBottom: '0.75rem'
-                    }}>
+                  <div className="blog-card__body">
+                    <div className="blog-card__meta">
                       <span>{post.date}</span>
                       <span>{post.readTime}</span>
                     </div>
-                    
-                    <h3 style={{
-                      fontSize: '1.25rem',
-                      lineHeight: '1.4',
-                      marginBottom: '0.75rem',
-                      fontFamily: 'var(--font-heading)'
-                    }}>{post.title}</h3>
 
-                    <p style={{
-                      fontSize: '0.9rem',
-                      lineHeight: '1.6',
-                      color: 'var(--color-text-light)',
-                      marginBottom: '1.5rem',
-                      display: '-webkit-box',
-                      WebkitLineClamp: 3,
-                      WebkitBoxOrient: 'vertical',
-                      overflow: 'hidden',
-                      flexGrow: 1
-                    }}>{post.summary}</p>
+                    <h3 className="blog-card__title">{post.title}</h3>
 
-                    <button 
+                    <p className="blog-card__summary">{post.summary}</p>
+
+                    <button
                       onClick={() => setSelectedPost(post)}
-                      className="btn btn--outline" 
-                      style={{ 
-                        marginTop: 'auto',
-                        width: '100%',
-                        padding: '0.6rem 1rem',
-                        fontSize: '0.8rem'
-                      }}
+                      className="btn btn--outline blog-card__cta"
                     >
                       Read Full Story →
                     </button>
                   </div>
-                </div>
+                </article>
               </ScrollReveal>
             ))}
           </div>
@@ -451,7 +382,8 @@ export default function BlogPage() {
                 
                 <div style={{
                   display: 'flex',
-                  gap: '1.5rem',
+                  flexWrap: 'wrap',
+                  gap: '0.5rem 1.5rem',
                   fontSize: '0.85rem',
                   color: 'rgba(255,255,255,0.8)'
                 }}>

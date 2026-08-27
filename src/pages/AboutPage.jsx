@@ -2,24 +2,60 @@ import React, { useEffect } from 'react';
 import HeroSection from '../components/HeroSection';
 import ScrollReveal from '../components/ScrollReveal';
 
-const TIMELINE = [
-  { year: '1970s', title: 'The Beginning', desc: 'Raj Mittal, a visionary travel pioneer, starts organizing tours in Rajasthan, laying the foundation for a family legacy in Indian tourism.' },
-  { year: '1999', title: 'Jai India Voyage is Born', desc: 'Ashish Mittal, inspired by his father\'s passion, formally establishes Jai India Voyage Pvt. Ltd. in Gurugram, Haryana — combining modern professionalism with old-world hospitality.' },
-  { year: '2005', title: 'International Recognition', desc: 'The company earns Government of India (Department of Tourism) approval and IATO membership, opening doors to the global travel industry.' },
-  { year: '2010', title: 'Expanding Horizons', desc: 'Introduction of tribal tours, wildlife safaris, and Northeast India expeditions. Strong partnerships forged with European and North American travel agencies.' },
-  { year: '2015', title: 'Responsible Tourism', desc: 'Launch of CSR initiatives — women empowerment programs, clean water projects, artisan support, and community-based tourism in rural Rajasthan.' },
-  { year: '2020–Present', title: 'A New Era', desc: 'Embracing digital transformation while maintaining the personal touch. Over 5000 travelers served across 30+ nationalities. The legacy continues.' },
+const TEAM = [
+  {
+    name: 'Ashish Mittal',
+    photo: '/images/team/ashish_mittal.jpg',
+    initials: 'AM',
+    bio: "Educated in Paris and a psychology scholar in Delhi, Ashish earned a distinguished scholarship at the University of Angers, France. A licensed guide of over two decades, he is part historian, part storyteller — a living archive of India's cultures, traditions, and artisanal heritage.",
+  },
+  {
+    name: 'Raj Vir Mittal',
+    photo: '/images/team/raj_vir_mittal.png',
+    initials: 'RM',
+    bio: 'After a decade in Europe, Raj Vir introduced "Namastey India" to France and Italy. A photographer and professionally qualified travel writer, he is the mentor behind Jai India Voyage and an authority on India\'s tribes, cuisines and hidden corners.',
+  },
+  {
+    name: 'Vikas Sajwan',
+    photo: '/images/team/vikas_sajwan.jpg',
+    initials: 'VS',
+    bio: 'A voracious traveller and travel graduate, Vikas heads the operations team that turns every bespoke itinerary into a flawless journey. He embodies the company vision — treating travel as an intimate and intellectual experience rather than a checklist of sights.',
+  },
+  {
+    name: 'Divya Mittal',
+    photo: '/images/team/divya_mittal.jpg',
+    initials: 'DM',
+    bio: "Divya's passion for cooking is woven into the guest experience — private lunches, intimate dinners and hosted cooking classes that reflect her talent and warmth. She also oversees the company's accounts, bringing the same precision to its finances.",
+  },
 ];
 
 const CSR_INITIATIVES = [
-  { title: 'Women Empowerment', desc: 'Training women in rural communities as local guides, artisans, and homestay hosts — creating sustainable livelihoods.', image: '/images/Empowering_Women.jpg' },
-  { title: 'Clean Water Initiative', desc: 'Partnering with NGOs to provide clean drinking water access in remote villages of Rajasthan.', image: '/images/Clean_Water_Initiative.jpg' },
-  { title: 'Artisan Support', desc: 'Connecting traditional craftspeople directly with tourists, ensuring fair trade and preserving centuries-old art forms.', image: '/images/Crafting_Livelihood.jpg' },
-  { title: 'Hygiene & Education', desc: 'Distributing hygiene kits and supporting education programs in underserved communities we visit.', image: '/images/Hygiene_Empowerment.jpg' },
+  {
+    title: 'Women Empowerment',
+    desc: 'Training women in rural communities as local guides, artisans, and homestay hosts — creating sustainable livelihoods.',
+    image: '/images/Empowering_Women.jpg',
+  },
+  {
+    title: 'Clean Water Initiative',
+    desc: 'Partnering with NGOs to provide clean drinking water access in remote villages of Rajasthan.',
+    image: '/images/Clean_Water_Initiative.jpg',
+  },
+  {
+    title: 'Artisan Support',
+    desc: 'Connecting traditional craftspeople directly with tourists, ensuring fair trade and preserving centuries-old art forms.',
+    image: '/images/Crafting_Livelihood.jpg',
+  },
+  {
+    title: 'Hygiene & Education',
+    desc: 'Distributing hygiene kits and supporting education programs in underserved communities we visit.',
+    image: '/images/Hygiene_Empowerment.jpg',
+  },
 ];
 
 export default function AboutPage() {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -41,47 +77,29 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
           <ScrollReveal>
-            <p style={{ fontSize: '1.05rem', lineHeight: '2', textAlign: 'center', marginBottom: '2rem' }}>
-              Jai India Voyage was born from a deep-rooted love for India — a love that spans generations. 
-              It all began in the 1970s when <strong>Raj Mittal</strong> started guiding travelers through the royal heartlands of Rajasthan, 
-              sharing not just monuments but the living soul of Indian culture.
-            </p>
-            <p style={{ fontSize: '1.05rem', lineHeight: '2', textAlign: 'center' }}>
-              His son, <strong>Ashish Mittal</strong>, transformed that passion into a modern Destination Management Company in 1999. 
-              Today, we don't just plan tours — we craft deeply personal experiences. From private dinners in 400-year-old palaces 
-              to intimate evenings with tribal communities, every journey we design is a window into the real India.
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ─── TIMELINE ─── */}
-      <section className="section section--cream">
-        <div className="container">
-          <ScrollReveal>
-            <div className="section-header">
-              <p className="section-label">Our Journey</p>
-              <h2>Milestones</h2>
+            <div className="prose-center">
+              <p>
+                <strong>Jai India Voyage Pvt. Ltd.</strong> is a Destination Management Company led by experienced tourism professionals with decades of expertise in Europe and India.
+              </p>
+              <p>
+                We create <strong>tailor-made journeys</strong> across India and the subcontinent, specialising in lesser-known cultural, heritage, wildlife, adventure, wellness, and leisure experiences.
+              </p>
+              <p>
+                Our bespoke programmes are designed for discerning travellers, photographers, journalists, and Press &amp; TV teams seeking authentic destinations beyond the conventional tourist trail.
+              </p>
+              <p>
+                We also curate specialised experiences around <strong>Indian art, crafts, textiles, architecture, festivals, and tribal cultures</strong>, along with private Indian cooking sessions featuring regional specialities.
+              </p>
+              <p className="prose-center__closing prose-center__closing--italic">
+                Our philosophy is simple: <strong>India is more than a holiday — it is an opportunity to discover, connect, and experience something truly unique.</strong>
+              </p>
             </div>
           </ScrollReveal>
-          <div className="timeline">
-            {TIMELINE.map((item, i) => (
-              <ScrollReveal key={i} direction="left">
-                <div className="timeline__item">
-                  <span className="timeline__year">{item.year}</span>
-                  <div className="timeline__content">
-                    <h4>{item.title}</h4>
-                    <p>{item.desc}</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
         </div>
       </section>
 
       {/* ─── TEAM ─── */}
-      <section className="section">
+      <section className="section section--cream">
         <div className="container">
           <ScrollReveal>
             <div className="section-header">
@@ -93,32 +111,32 @@ export default function AboutPage() {
             </div>
           </ScrollReveal>
 
-          <div className="team-grid" style={{ maxWidth: '800px', margin: '0 auto' }}>
-            <ScrollReveal direction="left">
-              <div className="team-card">
-                <img className="team-card__photo" src="/images/Jiv_5.jpg" alt="Ashish Mittal" />
-                <h3 className="team-card__name">Ashish Mittal</h3>
-                <p className="team-card__role">Founder & Managing Director</p>
-                <p className="team-card__bio">
-                  With over 25 years of experience in the Indian tourism industry, Ashish carries forward a family tradition 
-                  of warmth, expertise, and genuine care for every traveler. A passionate storyteller and cultural ambassador, 
-                  he personally oversees the design of every bespoke itinerary.
-                </p>
-              </div>
-            </ScrollReveal>
+          <div className="team-grid">
+            {TEAM.map((member) => (
+              <ScrollReveal key={member.name} className="team-grid__cell">
+                <article className="team-card">
+                  <div className="team-card__frame">
+                    {member.photo ? (
+                      <img
+                        className="team-card__photo"
+                        src={member.photo}
+                        alt={member.name}
+                        loading="lazy"
+                      />
+                    ) : (
+                      <span className="team-card__monogram" aria-hidden="true">
+                        {member.initials}
+                      </span>
+                    )}
+                  </div>
 
-            <ScrollReveal direction="right">
-              <div className="team-card">
-                <img className="team-card__photo" src="/images/client2.jpg" alt="Raj Mittal" />
-                <h3 className="team-card__name">Raj Mittal</h3>
-                <p className="team-card__role">Founder & Mentor</p>
-                <p className="team-card__bio">
-                  The original pioneer who started it all in the 1970s. Raj's deep connections with royal families, 
-                  village communities, and heritage properties across Rajasthan form the backbone of Jai India Voyage's 
-                  unmatched access and authenticity.
-                </p>
-              </div>
-            </ScrollReveal>
+                  <div className="team-card__body">
+                    <h3 className="team-card__name">{member.name}</h3>
+                    <p className="team-card__bio">{member.bio}</p>
+                  </div>
+                </article>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
@@ -137,14 +155,14 @@ export default function AboutPage() {
           </ScrollReveal>
 
           <div className="csr-grid">
-            {CSR_INITIATIVES.map((item, i) => (
-              <ScrollReveal key={i}>
-                <div className="feature-card" style={{ background: 'rgba(255,255,255,0.05)', borderColor: 'rgba(255,255,255,0.1)' }}>
-                  <div style={{ width: '80px', height: '80px', borderRadius: '50%', overflow: 'hidden', margin: '0 auto var(--space-lg)' }}>
-                    <img src={item.image} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            {CSR_INITIATIVES.map((item) => (
+              <ScrollReveal key={item.title}>
+                <div className="feature-card feature-card--csr">
+                  <div className="csr-card__avatar">
+                    <img src={item.image} alt={item.title} loading="lazy" />
                   </div>
-                  <h4 style={{ color: 'var(--color-secondary)' }}>{item.title}</h4>
-                  <p style={{ color: 'rgba(255,255,255,0.6)' }}>{item.desc}</p>
+                  <h4>{item.title}</h4>
+                  <p>{item.desc}</p>
                 </div>
               </ScrollReveal>
             ))}

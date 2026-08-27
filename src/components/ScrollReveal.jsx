@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-export default function ScrollReveal({ children, className = '', direction = 'up' }) {
+export default function ScrollReveal({ children, className = '', direction = 'up', delay = 0 }) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -23,8 +23,15 @@ export default function ScrollReveal({ children, className = '', direction = 'up
 
   const dirClass = direction === 'left' ? 'reveal--left' : direction === 'right' ? 'reveal--right' : '';
 
+  // Cap the stagger so a long grid's last card doesn't sit invisible for seconds
+  const staggerMs = Math.min(delay, 600);
+
   return (
-    <div ref={ref} className={`reveal ${dirClass} ${className}`}>
+    <div
+      ref={ref}
+      className={`reveal ${dirClass} ${className}`}
+      style={staggerMs ? { transitionDelay: `${staggerMs}ms` } : undefined}
+    >
       {children}
     </div>
   );

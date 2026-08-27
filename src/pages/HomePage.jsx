@@ -90,7 +90,7 @@ export default function HomePage() {
       <HeroSection
         image="/images/Slider2.jpg"
         video="/videos/hero_montage.webm"
-        label="Since 1999 · Gurugram, India"
+        label="Since 2022 · Gurugram, India"
         title="Discover the <em>Soul of India</em>"
         subtitle="Bespoke heritage, cultural, and spiritual journeys crafted by specialists who call India home."
         primaryBtn={
@@ -107,30 +107,37 @@ export default function HomePage() {
 
       {/* ─── INTRO ─── */}
       <section className="section">
-        <div className="container" style={{ textAlign: 'center' }}>
+        <div className="container">
           <ScrollReveal>
-            <p className="section-label">Welcome to Jai India Voyage</p>
-            <h2>Your Gateway to Extraordinary India</h2>
-            <div className="gold-divider">
-              <span className="gold-divider-icon">🪷</span>
+            <div className="section-header">
+              <p className="section-label">Welcome to Jai India Voyage</p>
+              <h2>Your Gateway to Extraordinary India</h2>
+              <div className="gold-divider">
+                <span className="gold-divider-icon">🪷</span>
+              </div>
             </div>
-            <p style={{ maxWidth: '750px', margin: '0 auto', fontSize: '1.05rem', lineHeight: '1.9' }}>
-              We are a specialist Destination Management Company that goes beyond ordinary tourism. 
-              Founded by <strong>Ashish Mittal</strong>, carrying forward a legacy started by his father <strong>Raj Mittal</strong> in the 1970s, 
-              we craft deeply personal journeys through India's royal palaces, sacred temples, tribal heartlands, 
-              and untouched wilderness — revealing the India that guidebooks can't capture.
-            </p>
+            <div className="prose-center">
+              <p>
+                Decades of tourism expertise across Europe and India come together to craft journeys for the curious traveler — one seeking a story, not just a holiday.
+              </p>
+              <p>
+                We specialize in India's road less traveled: wildlife, hidden heritage, vibrant festivals, and architectural marvels — with bespoke access for photographers, press, and film crews. Add in immersive textile trails, tribal tours, wellness retreats, and culinary experiences crafted around your palate.
+              </p>
+              <p className="prose-center__closing">
+                Every journey, guided by field experts. Every itinerary, entirely your own.
+              </p>
+            </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* ─── FEATURED DESTINATIONS ─── */}
+      {/* ─── BEST SELLERS ─── */}
       <section className="section section--cream">
         <div className="container">
           <ScrollReveal>
             <div className="section-header">
               <p className="section-label">Curated Journeys</p>
-              <h2>Featured Destinations</h2>
+              <h2>Best Sellers</h2>
               <p className="section-subtitle">
                 Handpicked experiences across the diverse landscapes of India
               </p>
@@ -146,9 +153,6 @@ export default function HomePage() {
                     <div className="dest-card__overlay">
                       <span className="dest-card__region">{dest.region}</span>
                       <h3 className="dest-card__name">{dest.name}</h3>
-                      <div className="dest-card__meta">
-                        <span>🕐 {dest.duration}</span>
-                      </div>
                       <p className="dest-card__desc">{dest.desc}</p>
                     </div>
                   </div>
@@ -199,10 +203,14 @@ export default function HomePage() {
             <div className="section-header">
               <p className="section-label">Client Diaries</p>
               <h2>Words from Our Travelers</h2>
+              <p className="section-subtitle">
+                Verified reviews from Tripadvisor — click any name to read the original
+              </p>
             </div>
           </ScrollReveal>
-          <TestimonialCarousel />
         </div>
+        {/* Full-bleed: the marquee sits outside .container so cards run edge to edge */}
+        <TestimonialCarousel />
       </section>
 
       {/* ─── TRUST BAR ─── */}
