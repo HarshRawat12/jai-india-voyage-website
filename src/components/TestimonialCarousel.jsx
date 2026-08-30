@@ -155,7 +155,7 @@ function ReviewCard({ review, cloned, onPhotoClick }) {
             >
               <img
                 className="review-card__photo"
-                src={`/images/reviews/${review.slug}/photo-0${n}.jpg`}
+                src={`/images/reviews/${review.slug}/photo-0${n}.webp`}
                 alt={`Photo ${n} from ${review.author}’s trip with Jai India Voyage`}
                 loading="lazy"
                 draggable="false"
@@ -361,7 +361,7 @@ export default function TestimonialCarousel() {
                   className="review-lightbox__image"
                   src={`/images/reviews/${modalData.review.slug}/photo-${String(
                     modalData.photoIndex
-                  ).padStart(2, '0')}.jpg`}
+                  ).padStart(2, '0')}.webp`}
                   alt={`Photo ${modalData.photoIndex} from ${modalData.review.author}’s trip with Jai India Voyage`}
                 />
                 {(modalData.review.photosCount || 2) > 1 && (

@@ -10,42 +10,42 @@ const FEATURED_DESTINATIONS = [
     name: 'Royal Rajasthan',
     region: 'North India',
     duration: '10–14 Days',
-    image: '/images/royal_rajasthan.png',
+    image: '/images/royal_rajasthan.webp',
     desc: 'Majestic forts, opulent palaces, vibrant bazaars, and the golden sands of the Thar Desert.',
   },
   {
     name: 'Golden Triangle',
     region: 'Classic India',
     duration: '5–7 Days',
-    image: '/images/golden_triangle.png',
+    image: '/images/golden_triangle.webp',
     desc: 'Delhi, Agra & Jaipur — the iconic introduction to India\'s timeless heritage.',
   },
   {
     name: 'South India Temples',
     region: 'South India',
     duration: '10–12 Days',
-    image: '/images/south_india_temples.png',
+    image: '/images/south_india_temples.webp',
     desc: 'Ancient Dravidian temples, lush backwaters, spice plantations, and serene beaches.',
   },
   {
     name: 'Kashmir & Ladakh',
     region: 'Himalayan India',
     duration: '8–12 Days',
-    image: '/images/kashmir_ladakh.png',
+    image: '/images/kashmir_ladakh.webp',
     desc: 'Paradise on Earth — snow-capped peaks, pristine lakes, and Buddhist monasteries.',
   },
   {
     name: 'Wildlife Safari',
     region: 'Central India',
     duration: '7–10 Days',
-    image: '/images/wildlife_safari.png',
+    image: '/images/wildlife_safari.webp',
     desc: 'Track Bengal tigers, leopards, and exotic birds in India\'s legendary national parks.',
   },
   {
     name: 'Northeast Explorer',
     region: 'Northeast India',
     duration: '10–14 Days',
-    image: '/images/northeast_explorer.png',
+    image: '/images/northeast_explorer.webp',
     desc: 'Uncharted tribal territories, living root bridges, and pristine Himalayan landscapes.',
   },
 ];
@@ -53,13 +53,13 @@ const FEATURED_DESTINATIONS = [
 const FEATURES = [
   {
     icon: '🏛️',
-    title: 'Heritage Expertise',
-    desc: 'Over 25 years of deep knowledge in Indian heritage, culture, and hidden gems that most travelers never discover.',
+    title: 'Heritage Knowledge',
+    desc: 'Over 25 years of deep knowledge in Indian heritage, culture, and lesser-known places shared with care.',
   },
   {
     icon: '✨',
-    title: '100% Bespoke Tours',
-    desc: 'Every journey is custom-designed around your interests, pace, and preferences. No cookie-cutter packages.',
+    title: 'Journeys Made for You',
+    desc: 'Every journey is shaped around your interests, pace, and preferences, with room for what matters to you.',
   },
   {
     icon: '🤝',
@@ -79,7 +79,7 @@ const FEATURES = [
   {
     icon: '🏡',
     title: 'Authentic Homestays',
-    desc: 'Experience real Indian hospitality with our curated homestay program — dine, cook, and celebrate with local families.',
+    desc: 'Experience real Indian hospitality through our homestays — dine, cook, and celebrate with local families.',
   },
 ];
 
@@ -88,11 +88,11 @@ export default function HomePage() {
     <>
       {/* ─── HERO ─── */}
       <HeroSection
-        image="/images/Slider2.jpg"
+        image="/images/Slider2.webp"
         video="/videos/hero_montage.webm"
         label="Since 2022 · Gurugram, India"
         title="Discover the <em>Soul of India</em>"
-        subtitle="Bespoke heritage, cultural, and spiritual journeys crafted by specialists who call India home."
+        subtitle="Thoughtful heritage, cultural, and spiritual journeys shaped by specialists who call India home."
         primaryBtn={
           <Link to="/destinations" className="btn btn--primary">
             Explore Destinations
@@ -111,20 +111,20 @@ export default function HomePage() {
           <ScrollReveal>
             <div className="section-header">
               <p className="section-label">Welcome to Jai India Voyage</p>
-              <h2>Your Gateway to Extraordinary India</h2>
+              <h2>Your Way into Extraordinary India</h2>
               <div className="gold-divider">
                 <span className="gold-divider-icon">🪷</span>
               </div>
             </div>
             <div className="prose-center">
               <p>
-                Decades of tourism expertise across Europe and India come together to craft journeys for the curious traveler — one seeking a story, not just a holiday.
+                Decades of tourism expertise across Europe and India come together to shape journeys for the curious traveler — one seeking a story, not just a holiday.
               </p>
               <p>
-                We specialize in India's road less traveled: wildlife, hidden heritage, vibrant festivals, and architectural marvels — with bespoke access for photographers, press, and film crews. Add in immersive textile trails, tribal tours, wellness retreats, and culinary experiences crafted around your palate.
+                We explore India's quieter paths: wildlife, hidden heritage, vibrant festivals, and architectural marvels — with thoughtful access for photographers, press, and film crews. Add immersive textile trails, tribal tours, wellness retreats, and culinary experiences shaped around your palate.
               </p>
               <p className="prose-center__closing">
-                Every journey, guided by field experts. Every itinerary, entirely your own.
+                Every journey, guided by field experts. Every itinerary, truly your own.
               </p>
             </div>
           </ScrollReveal>
@@ -137,7 +137,7 @@ export default function HomePage() {
           <ScrollReveal>
             <div className="section-header">
               <p className="section-label">Curated Journeys</p>
-              <h2>Best Sellers</h2>
+              <h2>Favourite Journeys</h2>
               <p className="section-subtitle">
                 Handpicked experiences across the diverse landscapes of India
               </p>
@@ -174,10 +174,10 @@ export default function HomePage() {
         <div className="container">
           <ScrollReveal>
             <div className="section-header">
-              <p className="section-label">Why Jai India Voyage</p>
-              <h2>What Sets Us Apart</h2>
+              <p className="section-label">The Jai India Voyage Way</p>
+              <h2>How We Travel With You</h2>
               <p className="section-subtitle">
-                More than a tour operator — we are your personal gateway to India's wonders
+                More than a tour operator — we help you find your own way into India
               </p>
             </div>
           </ScrollReveal>
@@ -225,7 +225,7 @@ export default function HomePage() {
       {/* ─── CTA BANNER ─── */}
       <section className="cta-banner">
         <div className="cta-banner__bg">
-          <img src="/images/Slider4.jpg" alt="" loading="lazy" />
+          <img src="/images/Slider4.webp" alt="" loading="lazy" />
         </div>
         <div className="cta-banner__overlay" />
         <div className="cta-banner__content container">
@@ -233,12 +233,12 @@ export default function HomePage() {
             <p className="section-label" style={{ color: 'var(--color-secondary)' }}>
               Ready to Begin?
             </p>
-            <h2>Let's Craft Your Perfect Indian Journey</h2>
+            <h2>Let's Shape Your Indian Journey</h2>
             <p>
-              Tell us your dream, and our specialists will design a bespoke itinerary just for you.
+              Tell us what matters to you, and our specialists will shape an itinerary around it.
             </p>
             <Link to="/contact" className="btn btn--gold">
-              Start Planning →
+              Begin Together →
             </Link>
           </ScrollReveal>
         </div>

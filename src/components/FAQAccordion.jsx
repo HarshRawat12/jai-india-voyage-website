@@ -11,15 +11,15 @@ const FAQ_DATA = [
   },
   {
     q: "How customizable are your tours?",
-    a: "Every tour is 100% bespoke. We don't do cookie-cutter packages. Tell us your interests — heritage, wildlife, spirituality, cuisine, adventure — and we craft a personalized itinerary with handpicked hotels, private guides, and unique local experiences.",
+    a: "Every tour is thoughtfully tailored. We begin with your interests — heritage, wildlife, spirituality, cuisine, adventure — then shape a personal itinerary with carefully chosen hotels, private guides, and meaningful local experiences.",
   },
   {
     q: "What kind of accommodations do you offer?",
-    a: "From heritage havelis and palace hotels to boutique properties and luxury tented camps. We also offer authentic homestays with Indian families for those seeking deeper cultural immersion. Every accommodation is personally vetted by our team.",
+    a: "From heritage havelis and palace hotels to boutique properties and luxury tented camps. We also offer authentic homestays with Indian families for guests seeking a deeper cultural connection. Each stay is personally checked by our team.",
   },
   {
     q: "Is India safe for solo travelers and families?",
-    a: "Absolutely! With our expert guides and 24/7 on-ground support, India is completely safe and incredibly rewarding. We specialize in family tours and have hosted solo travelers, school groups, and senior citizens with equal care and safety.",
+    a: "Absolutely. With our experienced guides and 24/7 local support, you can travel India with reassurance. We welcome families, solo travelers, school groups, and seniors with the same care and attention.",
   },
   {
     q: "What is responsible tourism and how do you practice it?",

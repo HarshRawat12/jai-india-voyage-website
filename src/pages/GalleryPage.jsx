@@ -1,115 +1,274 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { ChevronLeft, ChevronRight, Expand, X } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
 import ScrollReveal from '../components/ScrollReveal';
 
 const GALLERY_IMAGES = [
-  { src: '/images/Amber-fort.jpg', caption: 'Amber Fort, Jaipur', category: 'Rajasthan' },
-  { src: '/images/Sam-sand-dunes-jaisalmer.jpg', caption: 'Sam Sand Dunes, Jaisalmer', category: 'Rajasthan' },
-  { src: '/images/Old-city-of-jodhpur.jpg', caption: 'Blue City of Jodhpur', category: 'Rajasthan' },
-  { src: '/images/Patwon-ki-Havelli-jaisalmer.jpg', caption: 'Patwon ki Haveli, Jaisalmer', category: 'Rajasthan' },
-  { src: '/images/MAHABALIPURAM.jpg', caption: 'Shore Temple, Mahabalipuram', category: 'South India' },
-  { src: '/images/MADURAI.jpg', caption: 'Meenakshi Temple, Madurai', category: 'South India' },
-  { src: '/images/PONDICHERY.jpg', caption: 'French Quarter, Pondicherry', category: 'South India' },
-  { src: '/images/AMMA-MANDAPAM.jpg', caption: 'Amma Mandapam', category: 'South India' },
-  { src: '/images/Khajuraho.jpg', caption: 'Khajuraho Temples', category: 'Central India' },
-  { src: '/images/Gwalior-fort.jpg', caption: 'Gwalior Fort', category: 'Central India' },
-  { src: '/images/Kailasha-temple-Aurangabad.jpg', caption: 'Kailasha Temple, Aurangabad', category: 'Central India' },
-  { src: '/images/Mandor--garden--jodhpur.jpg', caption: 'Mandore Gardens, Jodhpur', category: 'Rajasthan' },
-  { src: '/images/Dinner-at-ALSISAR-MAHAL.jpg', caption: 'Royal Dinner at Alsisar Mahal', category: 'Experiences' },
-  { src: '/images/Magic-moments-at-gajner-pal.jpg', caption: 'Gajner Palace', category: 'Experiences' },
-  { src: '/images/Our-homestay.jpg', caption: 'Our Heritage Homestay', category: 'Experiences' },
-  { src: '/images/Our-homestay1.jpg', caption: 'Homestay Courtyard', category: 'Experiences' },
-  { src: '/images/Interaction-with-Maharaja-o.jpg', caption: 'Meeting with Maharaja', category: 'Experiences' },
-  { src: '/images/Canadian-school-tour-to-uda.jpg', caption: 'School Group Tour, Udaipur', category: 'Experiences' },
-  { src: '/images/Admiring-old-city-of-jodhpu.jpg', caption: 'Jodhpur Old City Views', category: 'Rajasthan' },
-  { src: '/images/Holy-tour-to-Haridwar.jpg', caption: 'Ganga Aarti, Haridwar', category: 'Spiritual' },
-  { src: '/images/Lucknow.jpg', caption: 'Bara Imambara, Lucknow', category: 'Central India' },
-  { src: '/images/Bombay.jpg', caption: 'Gateway of India, Mumbai', category: 'Central India' },
-  { src: '/images/orrisa.jpg', caption: 'Tribal Village, Orissa', category: 'Experiences' },
-  { src: '/images/Dev-Vatika.jpg', caption: 'Dev Vatika Heritage', category: 'Rajasthan' },
-  { src: '/images/Waiting-for-sunset-at-Sam-s.jpg', caption: 'Desert Sunset, Jaisalmer', category: 'Rajasthan' },
-  { src: '/images/Tour--of-auroville-pondiche.jpg', caption: 'Auroville, Pondicherry', category: 'South India' },
-  { src: '/images/chenni.jpg', caption: 'Chennai Temples', category: 'South India' },
-  { src: '/images/A-moment-of-joy-after-the-c.jpg', caption: 'Joy of Travel', category: 'Experiences' },
+  {
+    src: '/images/gallery/taj-mahal-group-portrait.webp',
+    caption: 'Together at the Taj Mahal',
+    alt: 'A Jai India Voyage group posing together in front of the Taj Mahal',
+    category: 'Experiences',
+    size: 'tall',
+  },
+  {
+    src: '/images/gallery/taj-mahal-travel-group.webp',
+    caption: 'A morning at the Taj Mahal',
+    alt: 'Travelers standing on the gardens in front of the Taj Mahal',
+    category: 'Experiences',
+    size: 'landscape',
+  },
+  {
+    src: '/images/gallery/heritage-arch-group.webp',
+    caption: 'Framed by Rajasthan',
+    alt: 'Travelers gathered beneath an ornate yellow heritage arch in Rajasthan',
+    category: 'Rajasthan',
+    size: 'portrait',
+  },
+  {
+    src: '/images/gallery/heritage-courtyard-gathering.webp',
+    caption: 'An evening in a heritage courtyard',
+    alt: 'A travel group relaxing in the courtyard of a carved sandstone haveli',
+    category: 'Rajasthan',
+    size: 'landscape',
+  },
+  {
+    src: '/images/gallery/heritage-balcony-travelers.webp',
+    caption: 'Warm welcomes, timeless details',
+    alt: 'Two smiling travelers leaning over an intricately carved stone balcony',
+    category: 'Experiences',
+    size: 'portrait',
+  },
+  {
+    src: '/images/gallery/palace-courtyard-group.webp',
+    caption: 'Palace stories in the afternoon sun',
+    alt: 'Travelers posing in the courtyard of a historic Rajasthani palace',
+    category: 'Rajasthan',
+    size: 'portrait',
+  },
+  {
+    src: '/images/gallery/tiger-safari-walking.webp',
+    caption: 'The forest reveals its stripes',
+    alt: 'A Bengal tiger walking through dry forest during a wildlife safari',
+    category: 'Wildlife',
+    size: 'tall',
+  },
+  {
+    src: '/images/gallery/tiger-by-lake.webp',
+    caption: 'On the water’s edge',
+    alt: 'A Bengal tiger walking beside a lake as birds fly over the water',
+    category: 'Wildlife',
+    size: 'wide',
+  },
+  {
+    src: '/images/gallery/tiger-resting-in-forest.webp',
+    caption: 'A quiet encounter in the wild',
+    alt: 'A Bengal tiger resting on the forest floor and looking toward the camera',
+    category: 'Wildlife',
+    size: 'landscape',
+  },
+  { src: '/images/Amber-fort.webp', caption: 'Amber Fort, Jaipur', category: 'Rajasthan', size: 'landscape' },
+  { src: '/images/Sam-sand-dunes-jaisalmer.webp', caption: 'Sam Sand Dunes, Jaisalmer', category: 'Rajasthan', size: 'landscape' },
+  { src: '/images/Old-city-of-jodhpur.webp', caption: 'Blue City of Jodhpur', category: 'Rajasthan', size: 'standard' },
+  { src: '/images/Patwon-ki-Havelli-jaisalmer.webp', caption: 'Patwon ki Haveli, Jaisalmer', category: 'Rajasthan', size: 'standard' },
+  { src: '/images/MAHABALIPURAM.webp', caption: 'Shore Temple, Mahabalipuram', category: 'South India', size: 'landscape' },
+  { src: '/images/MADURAI.webp', caption: 'Meenakshi Temple, Madurai', category: 'South India', size: 'standard' },
+  { src: '/images/PONDICHERY.webp', caption: 'French Quarter, Pondicherry', category: 'South India', size: 'standard' },
+  { src: '/images/AMMA-MANDAPAM.webp', caption: 'Amma Mandapam', category: 'South India', size: 'landscape' },
+  { src: '/images/Khajuraho.webp', caption: 'Khajuraho Temples', category: 'Central India', size: 'standard' },
+  { src: '/images/Gwalior-fort.webp', caption: 'Gwalior Fort', category: 'Central India', size: 'landscape' },
+  { src: '/images/Kailasha-temple-Aurangabad.webp', caption: 'Kailasha Temple, Aurangabad', category: 'Central India', size: 'standard' },
+  { src: '/images/Mandor--garden--jodhpur.webp', caption: 'Mandore Gardens, Jodhpur', category: 'Rajasthan', size: 'landscape' },
+  { src: '/images/Dinner-at-ALSISAR-MAHAL.webp', caption: 'Royal Dinner at Alsisar Mahal', category: 'Experiences', size: 'standard' },
+  { src: '/images/Magic-moments-at-gajner-pal.webp', caption: 'Gajner Palace', category: 'Experiences', size: 'landscape' },
+  { src: '/images/Our-homestay.webp', caption: 'Our Heritage Homestay', category: 'Experiences', size: 'standard' },
+  { src: '/images/Our-homestay1.webp', caption: 'Homestay Courtyard', category: 'Experiences', size: 'standard' },
+  { src: '/images/Interaction-with-Maharaja-o.webp', caption: 'Meeting with Maharaja', category: 'Experiences', size: 'landscape' },
+  { src: '/images/Canadian-school-tour-to-uda.webp', caption: 'School Group Tour, Udaipur', category: 'Experiences', size: 'standard' },
+  { src: '/images/Admiring-old-city-of-jodhpu.webp', caption: 'Jodhpur Old City Views', category: 'Rajasthan', size: 'standard' },
+  { src: '/images/Holy-tour-to-Haridwar.webp', caption: 'Ganga Aarti, Haridwar', category: 'Spiritual', size: 'landscape' },
+  { src: '/images/Lucknow.webp', caption: 'Bara Imambara, Lucknow', category: 'Central India', size: 'standard' },
+  { src: '/images/Bombay.webp', caption: 'Gateway of India, Mumbai', category: 'Central India', size: 'landscape' },
+  { src: '/images/orrisa.webp', caption: 'Tribal Village, Orissa', category: 'Experiences', size: 'standard' },
+  { src: '/images/Dev-Vatika.webp', caption: 'Dev Vatika Heritage', category: 'Rajasthan', size: 'standard' },
+  { src: '/images/Waiting-for-sunset-at-Sam-s.webp', caption: 'Desert Sunset, Jaisalmer', category: 'Rajasthan', size: 'landscape' },
+  { src: '/images/Tour--of-auroville-pondiche.webp', caption: 'Auroville, Pondicherry', category: 'South India', size: 'standard' },
+  { src: '/images/chenni.webp', caption: 'Chennai Temples', category: 'South India', size: 'standard' },
+  { src: '/images/A-moment-of-joy-after-the-c.webp', caption: 'Joy of Travel', category: 'Experiences', size: 'landscape' },
 ];
 
-const CATEGORIES = ['All', 'Rajasthan', 'South India', 'Central India', 'Experiences', 'Spiritual'];
+const CATEGORIES = ['All', 'Rajasthan', 'South India', 'Central India', 'Experiences', 'Spiritual', 'Wildlife'];
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState('All');
-  const [lightboxImg, setLightboxImg] = useState(null);
-  const [filtered, setFiltered] = useState(GALLERY_IMAGES);
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+
+  const filteredImages = activeCategory === 'All'
+    ? GALLERY_IMAGES
+    : GALLERY_IMAGES.filter((image) => image.category === activeCategory);
+  const lightboxImage = lightboxIndex === null ? null : filteredImages[lightboxIndex];
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   useEffect(() => {
-    if (activeCategory === 'All') {
-      setFiltered(GALLERY_IMAGES);
-    } else {
-      setFiltered(GALLERY_IMAGES.filter((img) => img.category === activeCategory));
-    }
-  }, [activeCategory]);
+    if (!lightboxImage) return undefined;
 
-  // Close lightbox on Escape
-  useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === 'Escape') setLightboxImg(null);
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setLightboxIndex(null);
+      if (event.key === 'ArrowRight') {
+        setLightboxIndex((current) => (current + 1) % filteredImages.length);
+      }
+      if (event.key === 'ArrowLeft') {
+        setLightboxIndex((current) => (current - 1 + filteredImages.length) % filteredImages.length);
+      }
     };
-    window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
-  }, []);
+
+    document.body.classList.add('lightbox-open');
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.classList.remove('lightbox-open');
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [filteredImages.length, lightboxImage]);
+
+  const selectCategory = (category) => {
+    setActiveCategory(category);
+    setLightboxIndex(null);
+  };
+
+  const showPrevious = () => {
+    setLightboxIndex((current) => (current - 1 + filteredImages.length) % filteredImages.length);
+  };
+
+  const showNext = () => {
+    setLightboxIndex((current) => (current + 1) % filteredImages.length);
+  };
 
   return (
     <>
       <HeroSection
-        image="/images/header_gallery.png"
+        image="/images/header_gallery.webp"
         label="Visual Stories"
         title="Our <em>Gallery</em>"
-        subtitle="A glimpse into the extraordinary moments we've shared with travelers from around the world."
+        subtitle="A glimpse of meaningful moments shared with travellers from around the world."
         short
       />
 
-      <section className="section">
+      <section id="gallery" className="section gallery-section">
         <div className="container">
           <ScrollReveal>
-            <div className="category-tabs">
-              {CATEGORIES.map((cat) => (
+            <div className="gallery-intro">
+              <div>
+                <span className="section-label">Travel, framed</span>
+                <h2>Stories from the road</h2>
+              </div>
+              <p>
+                From quiet wildlife encounters to laughter shared beneath palace arches,
+                each frame holds a memory from journeys across India.
+              </p>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal>
+            <div className="category-tabs" aria-label="Filter gallery by region or experience">
+              {CATEGORIES.map((category) => (
                 <button
-                  key={cat}
-                  className={`category-tab ${activeCategory === cat ? 'category-tab--active' : ''}`}
-                  onClick={() => setActiveCategory(cat)}
+                  type="button"
+                  key={category}
+                  className={`category-tab ${activeCategory === category ? 'category-tab--active' : ''}`}
+                  aria-pressed={activeCategory === category}
+                  onClick={() => selectCategory(category)}
                 >
-                  {cat}
+                  {category}
                 </button>
               ))}
             </div>
           </ScrollReveal>
 
-          <div className="gallery-grid">
-            {filtered.map((img, i) => (
-              <div
-                className="gallery-item"
-                key={img.src + i}
-                onClick={() => setLightboxImg(img)}
+          <div className="gallery-grid" aria-live="polite">
+            {filteredImages.map((image, index) => (
+              <button
+                type="button"
+                className={`gallery-item gallery-item--${image.size || 'standard'}${index === filteredImages.length - 1 ? ' gallery-item--closing' : ''}`}
+                key={image.src}
+                aria-label={`Open photo: ${image.caption}`}
+                onClick={() => setLightboxIndex(index)}
               >
-                <img src={img.src} alt={img.caption} loading="lazy" />
-                <div className="gallery-item__caption">{img.caption}</div>
-              </div>
+                <img
+                  src={image.src}
+                  alt={image.alt || image.caption}
+                  loading={index < 9 ? 'eager' : 'lazy'}
+                  fetchPriority={index < 3 ? 'high' : 'auto'}
+                  decoding="async"
+                  draggable="false"
+                />
+                <span className="gallery-item__details">
+                  <span className="gallery-item__category">{image.category}</span>
+                  <span className="gallery-item__caption">{image.caption}</span>
+                </span>
+                <span className="gallery-item__expand" aria-hidden="true">
+                  <Expand size={17} strokeWidth={1.8} />
+                </span>
+              </button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Lightbox */}
-      {lightboxImg && (
-        <div className="lightbox" onClick={() => setLightboxImg(null)}>
-          <button className="lightbox__close" onClick={() => setLightboxImg(null)}>✕</button>
-          <div onClick={(e) => e.stopPropagation()}>
-            <img src={lightboxImg.src} alt={lightboxImg.caption} />
-            <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.7)', marginTop: '1rem', fontSize: '0.9rem' }}>
-              {lightboxImg.caption}
-            </p>
-          </div>
+      {lightboxImage && (
+        <div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Photo viewer: ${lightboxImage.caption}`}
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setLightboxIndex(null);
+          }}
+        >
+          <button
+            type="button"
+            className="lightbox__close"
+            aria-label="Close photo viewer"
+            onClick={() => setLightboxIndex(null)}
+            autoFocus
+          >
+            <X size={24} />
+          </button>
+
+          {filteredImages.length > 1 && (
+            <>
+              <button
+                type="button"
+                className="lightbox__nav lightbox__nav--previous"
+                aria-label="Show previous photo"
+                onClick={showPrevious}
+              >
+                <ChevronLeft size={26} />
+              </button>
+              <button
+                type="button"
+                className="lightbox__nav lightbox__nav--next"
+                aria-label="Show next photo"
+                onClick={showNext}
+              >
+                <ChevronRight size={26} />
+              </button>
+            </>
+          )}
+
+          <figure className="lightbox__figure">
+            <img src={lightboxImage.src} alt={lightboxImage.alt || lightboxImage.caption} />
+            <figcaption className="lightbox__caption">
+              <span>
+                <strong>{lightboxImage.caption}</strong>
+                <small>{lightboxImage.category}</small>
+              </span>
+              <span className="lightbox__counter">
+                {lightboxIndex + 1} / {filteredImages.length}
+              </span>
+            </figcaption>
+          </figure>
         </div>
       )}
     </>

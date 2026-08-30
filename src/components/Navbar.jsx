@@ -31,7 +31,7 @@ export default function Navbar() {
       <div className="navbar__inner">
         {/* Logo */}
         <Link to="/" className="navbar__logo">
-          <img src="/images/logo_white.png" alt="Jai India Voyage" />
+          <img src="/images/logo_white.webp" alt="Jai India Voyage" />
           <span className="navbar__brand">Jai India Voyage</span>
         </Link>
 
@@ -47,7 +47,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link to="/contact" className="btn btn--gold navbar__cta">
-            Get a Quote
+            Plan With Us
           </Link>
         </div>
 

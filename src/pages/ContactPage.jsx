@@ -32,10 +32,10 @@ export default function ContactPage() {
   return (
     <>
       <HeroSection
-        image="/images/header_contact.png"
+        image="/images/header_contact.webp"
         label="Get In Touch"
         title="Let's <em>Connect</em>"
-        subtitle="Start a conversation about your dream Indian journey. We respond within 24 hours."
+        subtitle="Start a conversation about the Indian journey you have in mind. We respond within 24 hours."
         short
       />
 
@@ -47,7 +47,7 @@ export default function ContactPage() {
               <div>
                 <h2 style={{ marginBottom: '0.5rem' }}>Plan Your Journey</h2>
                 <p style={{ marginBottom: '2rem' }}>
-                  Fill out the form below and our travel specialists will craft a personalized itinerary for you.
+                  Share a few details below, and our travel specialists will shape an itinerary around you.
                 </p>
 
                 <form onSubmit={handleSubmit}>
@@ -97,11 +97,11 @@ export default function ContactPage() {
 
                   <div className="form-group">
                     <label htmlFor="message">Your Message</label>
-                    <textarea id="message" name="message" placeholder="Tell us about your dream trip — interests, must-see places, special occasions..." value={formData.message} onChange={handleChange} />
+                    <textarea id="message" name="message" placeholder="Tell us about your journey — interests, hoped-for places, special occasions..." value={formData.message} onChange={handleChange} />
                   </div>
 
                   <button type="submit" className="btn btn--primary" style={{ width: '100%' }}>
-                    Send Inquiry →
+                    Send Your Note →
                   </button>
                 </form>
               </div>
@@ -140,18 +140,18 @@ export default function ContactPage() {
                       rel="noopener noreferrer"
                       className="contact-panel__value contact-panel__value--whatsapp"
                     >
-                      Chat with us on WhatsApp →
+                      Talk with us on WhatsApp →
                     </a>
                   </div>
                 </div>
 
                 {/* Quick Stats */}
                 <div className="contact-stats">
-                  <h4 className="contact-stats__heading">Why Contact Us?</h4>
+                  <h4 className="contact-stats__heading">What You Can Expect</h4>
                   <div className="contact-stats__grid">
                     {[
                       { number: '24hr', label: 'Response Time' },
-                      { number: '100%', label: 'Custom Tours' },
+                      { number: '100%', label: 'Tailored Journeys' },
                       { number: '25+', label: 'Years Experience' },
                       { number: '5000+', label: 'Happy Travelers' },
                     ].map((stat) => (
@@ -175,7 +175,7 @@ export default function ContactPage() {
             <div className="section-header">
               <p className="section-label">Common Questions</p>
               <h2>Frequently Asked Questions</h2>
-              <p className="section-subtitle">Everything you need to know about planning your Indian journey</p>
+              <p className="section-subtitle">A few helpful answers for planning your Indian journey</p>
             </div>
           </ScrollReveal>
           <ScrollReveal>

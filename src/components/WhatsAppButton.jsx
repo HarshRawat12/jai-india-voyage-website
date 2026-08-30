@@ -3,11 +3,11 @@ import React from 'react';
 export default function WhatsAppButton() {
   return (
     <a
-      href="https://api.whatsapp.com/send?phone=919810082757&text=Hello!%20I%27m%20interested%20in%20planning%20a%20trip%20to%20India%20with%20Jai%20India%20Voyage."
+      href="https://api.whatsapp.com/send?phone=919810082757&text=Hello!%20I%27d%20love%20to%20plan%20an%20India%20journey%20with%20Jai%20India%20Voyage."
       target="_blank"
       rel="noopener noreferrer"
       className="whatsapp-float"
-      title="Chat with us on WhatsApp"
+      title="Chat on WhatsApp"
       aria-label="WhatsApp"
     >
       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">

@@ -5,25 +5,25 @@ import ScrollReveal from '../components/ScrollReveal';
 const TEAM = [
   {
     name: 'Ashish Mittal',
-    photo: '/images/team/ashish_mittal.jpg',
+    photo: '/images/team/ashish_mittal.webp',
     initials: 'AM',
     bio: "Educated in Paris and a psychology scholar in Delhi, Ashish earned a distinguished scholarship at the University of Angers, France. A licensed guide of over two decades, he is part historian, part storyteller — a living archive of India's cultures, traditions, and artisanal heritage.",
   },
   {
     name: 'Raj Vir Mittal',
-    photo: '/images/team/raj_vir_mittal.png',
+    photo: '/images/team/raj_vir_mittal.webp',
     initials: 'RM',
     bio: 'After a decade in Europe, Raj Vir introduced "Namastey India" to France and Italy. A photographer and professionally qualified travel writer, he is the mentor behind Jai India Voyage and an authority on India\'s tribes, cuisines and hidden corners.',
   },
   {
     name: 'Vikas Sajwan',
-    photo: '/images/team/vikas_sajwan.jpg',
+    photo: '/images/team/vikas_sajwan-jpg.webp',
     initials: 'VS',
-    bio: 'A voracious traveller and travel graduate, Vikas heads the operations team that turns every bespoke itinerary into a flawless journey. He embodies the company vision — treating travel as an intimate and intellectual experience rather than a checklist of sights.',
+    bio: 'A keen traveller and travel graduate, Vikas heads the operations team that helps each tailored itinerary unfold with care. He embodies the company vision — treating travel as an intimate and intellectual experience rather than a checklist of sights.',
   },
   {
     name: 'Divya Mittal',
-    photo: '/images/team/divya_mittal.jpg',
+    photo: '/images/team/divya_mittal.webp',
     initials: 'DM',
     bio: "Divya's passion for cooking is woven into the guest experience — private lunches, intimate dinners and hosted cooking classes that reflect her talent and warmth. She also oversees the company's accounts, bringing the same precision to its finances.",
   },
@@ -33,22 +33,22 @@ const CSR_INITIATIVES = [
   {
     title: 'Women Empowerment',
     desc: 'Training women in rural communities as local guides, artisans, and homestay hosts — creating sustainable livelihoods.',
-    image: '/images/Empowering_Women.jpg',
+    image: '/images/Empowering_Women.webp',
   },
   {
     title: 'Clean Water Initiative',
     desc: 'Partnering with NGOs to provide clean drinking water access in remote villages of Rajasthan.',
-    image: '/images/Clean_Water_Initiative.jpg',
+    image: '/images/Clean_Water_Initiative.webp',
   },
   {
     title: 'Artisan Support',
     desc: 'Connecting traditional craftspeople directly with tourists, ensuring fair trade and preserving centuries-old art forms.',
-    image: '/images/Crafting_Livelihood.jpg',
+    image: '/images/Crafting_Livelihood.webp',
   },
   {
     title: 'Hygiene & Education',
     desc: 'Distributing hygiene kits and supporting education programs in underserved communities we visit.',
-    image: '/images/Hygiene_Empowerment.jpg',
+    image: '/images/Hygiene_Empowerment.webp',
   },
 ];
 
@@ -60,7 +60,7 @@ export default function AboutPage() {
   return (
     <>
       <HeroSection
-        image="/images/header_about.png"
+        image="/images/header_about.webp"
         label="Our Story"
         title="A Legacy of <em>Passion</em>"
         subtitle="Three generations of love for India, its people, and its timeless heritage."
@@ -82,16 +82,16 @@ export default function AboutPage() {
                 <strong>Jai India Voyage Pvt. Ltd.</strong> is a Destination Management Company led by experienced tourism professionals with decades of expertise in Europe and India.
               </p>
               <p>
-                We create <strong>tailor-made journeys</strong> across India and the subcontinent, specialising in lesser-known cultural, heritage, wildlife, adventure, wellness, and leisure experiences.
+                We shape <strong>tailor-made journeys</strong> across India and the subcontinent, specialising in lesser-known cultural, heritage, wildlife, adventure, wellness, and leisure experiences.
               </p>
               <p>
-                Our bespoke programmes are designed for discerning travellers, photographers, journalists, and Press &amp; TV teams seeking authentic destinations beyond the conventional tourist trail.
+                Our tailored programmes welcome travellers, photographers, journalists, and Press &amp; TV teams drawn to places beyond the familiar route.
               </p>
               <p>
                 We also curate specialised experiences around <strong>Indian art, crafts, textiles, architecture, festivals, and tribal cultures</strong>, along with private Indian cooking sessions featuring regional specialities.
               </p>
               <p className="prose-center__closing prose-center__closing--italic">
-                Our philosophy is simple: <strong>India is more than a holiday — it is an opportunity to discover, connect, and experience something truly unique.</strong>
+                Our philosophy is simple: <strong>India is more than a holiday — it is an opportunity to discover, connect, and experience something deeply personal.</strong>
               </p>
             </div>
           </ScrollReveal>
@@ -106,7 +106,7 @@ export default function AboutPage() {
               <p className="section-label">Our People</p>
               <h2>Meet the Team</h2>
               <p className="section-subtitle">
-                The passionate individuals behind every unforgettable journey
+                The caring people behind every meaningful journey
               </p>
             </div>
           </ScrollReveal>
@@ -142,7 +142,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─── CSR / RESPONSIBLE TOURISM ─── */}
-      <section className="section section--dark">
+      <section className="section">
         <div className="container">
           <ScrollReveal>
             <div className="section-header">

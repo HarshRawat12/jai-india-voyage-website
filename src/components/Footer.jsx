@@ -10,14 +10,14 @@ export default function Footer() {
           <div className="footer__about">
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
               <div style={{ background: '#ffffff', padding: '6px 12px', borderRadius: '8px', display: 'inline-flex', alignItems: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }}>
-                <img src="/images/ministry_of_tourism.png" alt="Ministry of Tourism, Govt of India" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
+                <img src="/images/ministry_of_tourism.webp" alt="Ministry of Tourism, Govt of India" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
               </div>
               <div style={{ background: '#ffffff', padding: '6px 10px', borderRadius: '8px', display: 'inline-flex', alignItems: 'center', boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }}>
-                <img src="/images/iato_member.png" alt="IATO Allied Member" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
+                <img src="/images/iato_member.webp" alt="IATO Allied Member" style={{ height: '40px', width: 'auto', objectFit: 'contain' }} />
               </div>
             </div>
             <p>
-              Jai India Voyage Pvt. Ltd. is a specialist Destination Management Company crafting bespoke heritage, cultural, wildlife, and spiritual journeys across India and the sub-continent, established in 2022 and led by travel professionals with decades of experience.
+              Jai India Voyage Pvt. Ltd. is a Destination Management Company shaping thoughtful heritage, cultural, wildlife, and spiritual journeys across India and the sub-continent, established in 2022 and led by travel professionals with decades of experience.
             </p>
             <div className="footer__social">
               <a href="https://www.facebook.com/JaiIndiaVoyage" target="_blank" rel="noopener noreferrer" className="footer__social-link" title="Facebook">

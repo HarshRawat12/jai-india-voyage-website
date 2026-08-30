@@ -6,7 +6,7 @@ export default function LotusLoader({ onLoadingComplete }) {
   const mountTime = useRef(Date.now());
 
   useEffect(() => {
-    const minDisplayTime = 3200; // minimum time to show the bloom animation
+    const minDisplayTime = 1600; // Snappy & fast bloom animation display time
 
     const handleLoad = () => {
       const elapsed = Date.now() - mountTime.current;
@@ -17,7 +17,7 @@ export default function LotusLoader({ onLoadingComplete }) {
         setTimeout(() => {
           setIsVisible(false);
           if (onLoadingComplete) onLoadingComplete();
-        }, 900);
+        }, 500);
       }, remaining);
     };
 
@@ -140,12 +140,12 @@ export default function LotusLoader({ onLoadingComplete }) {
 
           {/* ── OUTER PETALS (bloom 3rd — largest, widest spread) ── */}
           {[
-            { rotate: -60, delay: 1.6 },
-            { rotate: -35, delay: 1.7 },
-            { rotate: -12, delay: 1.75 },
-            { rotate: 12, delay: 1.8 },
-            { rotate: 35, delay: 1.85 },
-            { rotate: 60, delay: 1.9 },
+            { rotate: -60, delay: 0.6 },
+            { rotate: -35, delay: 0.65 },
+            { rotate: -12, delay: 0.7 },
+            { rotate: 12, delay: 0.73 },
+            { rotate: 35, delay: 0.76 },
+            { rotate: 60, delay: 0.8 },
           ].map((p, i) => (
             <g key={`outer-${i}`} transform={`rotate(${p.rotate} 100 145)`}>
               <path
@@ -162,11 +162,11 @@ export default function LotusLoader({ onLoadingComplete }) {
 
           {/* ── MIDDLE PETALS (bloom 2nd) ── */}
           {[
-            { rotate: -40, delay: 1.1 },
-            { rotate: -15, delay: 1.2 },
-            { rotate: 0, delay: 1.15 },
-            { rotate: 15, delay: 1.25 },
-            { rotate: 40, delay: 1.3 },
+            { rotate: -40, delay: 0.35 },
+            { rotate: -15, delay: 0.38 },
+            { rotate: 0, delay: 0.4 },
+            { rotate: 15, delay: 0.43 },
+            { rotate: 40, delay: 0.46 },
           ].map((p, i) => (
             <g key={`mid-${i}`} transform={`rotate(${p.rotate} 100 145)`}>
               <path
@@ -183,9 +183,9 @@ export default function LotusLoader({ onLoadingComplete }) {
 
           {/* ── INNER PETALS (bloom 1st — smallest, central) ── */}
           {[
-            { rotate: -20, delay: 0.5 },
-            { rotate: 0, delay: 0.6 },
-            { rotate: 20, delay: 0.7 },
+            { rotate: -20, delay: 0.15 },
+            { rotate: 0, delay: 0.2 },
+            { rotate: 20, delay: 0.25 },
           ].map((p, i) => (
             <g key={`inner-${i}`} transform={`rotate(${p.rotate} 100 142)`}>
               <path
@@ -225,7 +225,7 @@ export default function LotusLoader({ onLoadingComplete }) {
             strokeWidth="1.5"
             strokeLinecap="round"
             className="lotus-loader__leaf"
-            style={{ '--bloom-delay': '2.2s' }}
+            style={{ '--bloom-delay': '0.85s' }}
           />
           <path
             d="M160 170 Q170 155 150 145 Q135 150 115 148"
@@ -234,7 +234,7 @@ export default function LotusLoader({ onLoadingComplete }) {
             strokeWidth="1.5"
             strokeLinecap="round"
             className="lotus-loader__leaf"
-            style={{ '--bloom-delay': '2.3s' }}
+            style={{ '--bloom-delay': '0.9s' }}
           />
 
           {/* Water line */}
@@ -245,7 +245,7 @@ export default function LotusLoader({ onLoadingComplete }) {
             strokeWidth="0.8"
             opacity="0.3"
             className="lotus-loader__leaf"
-            style={{ '--bloom-delay': '2.4s' }}
+            style={{ '--bloom-delay': '0.95s' }}
           />
         </svg>
       </div>

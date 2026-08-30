@@ -1,15 +1,15 @@
 import React from 'react';
 
 const STATS = [
-  { number: '25+', label: 'Years of Expertise' },
-  { number: '5000+', label: 'Happy Travelers' },
-  { number: '200+', label: 'Curated Itineraries' },
+  { number: '25+', label: 'Years of Experience' },
+  { number: '5000+', label: 'Travellers Welcomed' },
+  { number: '200+', label: 'Itineraries Shaped' },
   { number: '30+', label: 'Countries Served' },
 ];
 
 const ACCREDITATIONS = [
-  { src: '/images/IATO_Logo.jpeg', alt: 'IATO Member' },
-  { src: '/images/dot_logo.jpeg', alt: 'Govt. of India Approved' },
+  { src: '/images/IATO_Logo.webp', alt: 'IATO Member' },
+  { src: '/images/dot_logo.webp', alt: 'Govt. of India Approved' },
 ];
 
 export default function TrustBar() {

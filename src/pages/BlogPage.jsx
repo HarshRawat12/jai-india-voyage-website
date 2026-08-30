@@ -10,7 +10,7 @@ const BLOG_POSTS = [
     category: 'Spiritual',
     readTime: '6 min read',
     date: 'June 10, 2026',
-    image: '/images/Holy-tour-to-Haridwar.jpg',
+    image: '/images/Holy-tour-to-Haridwar.webp',
     summary: 'Discover India\'s spiritual heart on the banks of the sacred Ganges—a mystical city of rituals, ancient temples, and eternal fire.',
     content: `
       <p>Varanasi, also known as Benares or Kashi, is not just a city; it is a doorway into another dimension of human spirituality. Mark Twain famously wrote: <em>"Benares is older than history, older than tradition, older even than legend, and looks twice as old as all of them put together."</em> For over 3,000 years, this sacred spot on the banks of the River Ganges has been the center of the Hindu universe, drawing pilgrims, yogis, and travelers seeking liberation (Moksha).</p>
@@ -19,7 +19,7 @@ const BLOG_POSTS = [
       <p>According to legend, Varanasi was founded by Lord Shiva himself. The city has witnessed the rise and fall of empires, surviving waves of invasions while maintaining its spiritual heartbeat. It is where Gautama Buddha gave his first sermon in nearby Sarnath around 528 BCE, and where the great poet Kabir lived and wrote. Walking through the narrow, maze-like alleyways (known as galis), you are walking through layers of living history—ancient shrines, small spice stalls, and cows wandering past medieval doorways.</p>
       
       <h3>The Epic Scene</h3>
-      <p><strong>The Ganga Aarti at Sunset:</strong> As dusk falls, head to Dashashwamedh Ghat. The air fills with the smell of incense, sandalwood, and camphor. Seven young priests, clad in saffron robes, stand on elevated platforms facing the river. In perfect synchronization, they perform a rhythmic fire ritual, waving massive, multi-tiered brass lamps weighing several kilograms. The sound of conch shells, bells, and chanting echoes over the water as thousands of travelers watch from wooden boats, releasing small leaf cups with burning candles and marigolds into the flowing river. It is a spectacle of light, sound, and devotion that you will never forget.</p>
+      <p><strong>The Ganga Aarti at Sunset:</strong> As dusk falls, head to Dashashwamedh Ghat. The air fills with the smell of incense, sandalwood, and camphor. Seven young priests, clad in saffron robes, stand on elevated platforms facing the river. In perfect synchronization, they perform a rhythmic fire ritual, waving massive, multi-tiered brass lamps weighing several kilograms. The sound of conch shells, bells, and chanting echoes over the water as thousands of travelers watch from wooden boats, releasing small leaf cups with burning candles and marigolds into the flowing river. It is a spectacle of light, sound, and devotion that stays with you.</p>
 
       <h3>Travel Tip for European Visitors</h3>
       <p>Wake up at 5:00 AM for a sunrise boat ride. The morning light over the heritage ghats is magical, and you will see the city waking up—pilgrims performing morning prayers, dhobis washing clothes, and sadhus meditating on the stone steps in quiet contemplation.</p>
@@ -32,8 +32,8 @@ const BLOG_POSTS = [
     category: 'Heritage',
     readTime: '5 min read',
     date: 'June 05, 2026',
-    image: '/images/golden_triangle.png',
-    summary: 'The ultimate symbol of architectural perfection and romance. Read the history and discover the best spots to view the Taj without the crowds.',
+    image: '/images/golden_triangle.webp',
+    summary: 'A lasting symbol of architecture and romance. Read its history and find quieter places to view the Taj.',
     content: `
       <p>The Taj Mahal requires no introduction, yet no photograph can prepare you for the emotional impact of seeing it in person. Standing on the banks of the Yamuna River, this ivory-white marble mausoleum is widely considered the finest example of Mughal architecture, combining Persian, Islamic, and Indian design elements into a symmetrical masterpiece.</p>
       
@@ -54,7 +54,7 @@ const BLOG_POSTS = [
     category: 'Heritage',
     readTime: '7 min read',
     date: 'May 28, 2026',
-    image: '/images/royal_rajasthan.png',
+    image: '/images/royal_rajasthan.webp',
     summary: 'Step into the land of Maharajas. Explore the massive Amber Fort, the wind palace Hawa Mahal, and the royal history of Jaipur.',
     content: `
       <p>Jaipur, the capital of Rajasthan, is a vibrant assault on the senses. Known as the Pink City, its streets are a mix of camels, rickshaws, colorful textiles, and towering medieval forts. It is a city where royal history is not kept in textbooks but lived in grand palaces and active bazaars.</p>
@@ -76,7 +76,7 @@ const BLOG_POSTS = [
     category: 'Nature',
     readTime: '5 min read',
     date: 'May 20, 2026',
-    image: '/images/header_experiences.png',
+    image: '/images/header_experiences.webp',
     summary: 'Unwind on a traditional luxury houseboat, gliding down quiet palm-fringed canals, spice plantations, and serene lagoons.',
     content: `
       <p>If Northern India is a festival of colors and palaces, Southern India is a sanctuary of green hills, serene waters, and slow living. Nowhere is this more apparent than the backwaters of Kerala, a network of interconnected brackish lakes, rivers, and canals running parallel to the Arabian Sea coast.</p>
@@ -85,7 +85,7 @@ const BLOG_POSTS = [
       <p>These waterways were once the spice highways of ancient India. For centuries, traders from Europe, Rome, and Arabia came here to buy black pepper, cardamom, and cinnamon. The houseboats, known as <em>Kettuvallams</em>, were originally cargo boats used to carry rice and spices. They are made using eco-friendly materials—bamboo poles, coconut fibers, and cashew nut oil—without using a single metal nail.</p>
       
       <h3>The Epic Scene</h3>
-      <p><strong>Dusk on the Lagoon:</strong> As your luxury houseboat glides into the wide Vembanad Lake at sunset, the water turns into a mirror reflecting the purple and pink sky. Palm trees lean over the banks, their silhouettes framing the water. You sit on the wicker deck with a fresh coconut or a cup of local cardamom tea, watching traditional fishermen in small wooden canoes setting up Chinese fishing nets. The only sound is the gentle splash of water against the bamboo hull. It is the ultimate antidote to the busy modern lifestyle.</p>
+      <p><strong>Dusk on the Lagoon:</strong> As your luxury houseboat glides into the wide Vembanad Lake at sunset, the water turns into a mirror reflecting the purple and pink sky. Palm trees lean over the banks, their silhouettes framing the water. You sit on the wicker deck with a fresh coconut or a cup of local cardamom tea, watching traditional fishermen in small wooden canoes setting up Chinese fishing nets. The only sound is the gentle splash of water against the bamboo hull. It is a gentle pause from busy everyday life.</p>
 
       <h3>Travel Tip for European Visitors</h3>
       <p>Hire a private, fully-staffed houseboat with a personal chef. They will cook traditional Keralan meals, like Karimeen Pollichathu (pearl spot fish marinated in spices and grilled in a banana leaf), fresh on board using spices sourced from plantations along the way.</p>
@@ -98,7 +98,7 @@ const BLOG_POSTS = [
     category: 'Heritage',
     readTime: '7 min read',
     date: 'May 12, 2026',
-    image: '/images/Khajuraho.jpg',
+    image: '/images/Khajuraho.webp',
     summary: 'Explore a surreal landscape of giant granite boulders and ruined temples of a forgotten 14th-century empire.',
     content: `
       <p>Hampi is one of the most visually stunning archaeological sites on Earth. The ruins of the Vijayanagara Empire are scattered across a dry, red landscape covered in millions of giant granite boulders, looking like a forgotten fantasy kingdom.</p>
@@ -120,7 +120,7 @@ const BLOG_POSTS = [
     category: 'Nature',
     readTime: '6 min read',
     date: 'May 02, 2026',
-    image: '/images/kashmir_ladakh.png',
+    image: '/images/kashmir_ladakh.webp',
     summary: 'A high-altitude desert bordering Tibet. Read about the turquoise lakes, ancient monasteries, and trekking over the roof of the world.',
     content: `
       <p>Ladakh is a high-altitude desert nestled between the Karakoram and Himalayan mountain ranges. Known as Little Tibet, it is a land of barren peaks, dramatic deep valleys, ancient Buddhist monasteries, and friendly people who live in harmony with the harsh environment.</p>
@@ -142,7 +142,7 @@ const BLOG_POSTS = [
     category: 'Spiritual',
     readTime: '5 min read',
     date: 'April 25, 2026',
-    image: '/images/img4.jpg',
+    image: '/images/img4.webp',
     summary: 'Experience the spiritual energy of the Golden Temple and the heartwarming tradition of Langar, feeding 100,000 people daily.',
     content: `
       <p>Amritsar is the spiritual capital of the Sikh religion. While it is a bustling Punjabi city, the moment you step inside the white marble complex of the Harmandir Sahib (The Golden Temple), a sense of profound peace and welcome washes over you.</p>
@@ -164,7 +164,7 @@ const BLOG_POSTS = [
     category: 'Heritage',
     readTime: '6 min read',
     date: 'April 15, 2026',
-    image: '/images/Waiting-for-sunset-at-Sam-s.jpg',
+    image: '/images/Waiting-for-sunset-at-Sam-s.webp',
     summary: 'A golden sandstone fort rising from the sand dunes. Experience desert camping, camel safaris, and medieval architecture.',
     content: `
       <p>Jaisalmer is like a sandcastle that has come to life. Rising from the Thar Desert in western Rajasthan, the city is constructed almost entirely of yellow sandstone, giving it a golden glow that changes shades as the sun moves across the sky.</p>
@@ -186,7 +186,7 @@ const BLOG_POSTS = [
     category: 'Nature',
     readTime: '5 min read',
     date: 'April 08, 2026',
-    image: '/images/img1.jpg',
+    image: '/images/img1.webp',
     summary: 'Escape the heat in the cool hills of the Western Ghats. Discover rolling green tea plantations and scenic valley views.',
     content: `
       <p>Located 1,600 meters above sea level in the Western Ghats, Munnar is a hill station of green valleys, tea plantations, and cool mountain air. It is a peaceful escape from the warm coastal weather of South India.</p>
@@ -208,7 +208,7 @@ const BLOG_POSTS = [
     category: 'Nature',
     readTime: '7 min read',
     date: 'March 28, 2026',
-    image: '/images/northeast_explorer.png',
+    image: '/images/northeast_explorer.webp',
     summary: 'Journey into the wettest rainforests on Earth. See how the indigenous Khasi tribe grows living root bridges across rivers.',
     content: `
       <p>Meghalaya, which translates to "The Abode of Clouds," is a hilly state in Northeast India. It is a green wonderland of high plateaus, dense subtropical rainforests, clean rivers, and deep limestone caves.</p>
@@ -235,10 +235,10 @@ export default function BlogPage() {
   return (
     <>
       <HeroSection
-        image="/images/header_gallery.png"
+        image="/images/header_gallery.webp"
         label="Travel Chronicles"
         title="Our <em>Blog</em>"
-        subtitle="Explore the deep history, legends, and epic travel stories from the most iconic corners of India."
+        subtitle="Explore deep history, legends, and travel stories from India's most memorable corners."
         short
       />
 
@@ -248,7 +248,7 @@ export default function BlogPage() {
             <div className="section-header">
               <p className="section-label">Travel Journal</p>
               <h2>Stories from the Soul of India</h2>
-              <p className="section-subtitle">A guide to the history, magic, and culture of India—tailored for curious minds.</p>
+              <p className="section-subtitle">A guide to India's history, magic, and culture—for curious minds.</p>
             </div>
           </ScrollReveal>
 
@@ -419,10 +419,10 @@ export default function BlogPage() {
               }}>
                 <div>
                   <h4 style={{ fontFamily: 'var(--font-heading)', color: 'var(--color-primary)', marginBottom: '0.25rem' }}>
-                    Inspired to Visit {selectedPost.location.split(',')[0]}?
+                    Drawn to {selectedPost.location.split(',')[0]}?
                   </h4>
                   <p style={{ fontSize: '0.85rem', color: 'var(--color-text-light)' }}>
-                    Let our specialists craft a custom bespoke trip covering this location.
+                    Let our specialists shape a thoughtful journey through this place.
                   </p>
                 </div>
                 <button
@@ -433,7 +433,7 @@ export default function BlogPage() {
                   className="btn btn--primary"
                   style={{ fontSize: '0.85rem' }}
                 >
-                  Plan This Journey →
+                  Begin This Journey →
                 </button>
               </div>
             </div>
