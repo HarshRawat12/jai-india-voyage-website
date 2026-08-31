@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, Expand, X } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
 import ScrollReveal from '../components/ScrollReveal';
@@ -102,6 +102,7 @@ const CATEGORIES = ['All', 'Rajasthan', 'South India', 'Central India', 'Experie
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [lightboxIndex, setLightboxIndex] = useState(null);
+  const galleryRef = useRef(null);
 
   const filteredImages = activeCategory === 'All'
     ? GALLERY_IMAGES
@@ -109,6 +110,54 @@ export default function GalleryPage() {
   const lightboxImage = lightboxIndex === null ? null : filteredImages[lightboxIndex];
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  useEffect(() => {
+    const grid = galleryRef.current;
+    if (!grid) return undefined;
+
+    let animationFrame;
+    let previousWidth = 0;
+
+    const layoutItems = () => {
+      const styles = window.getComputedStyle(grid);
+      const targetRowHeight = Number.parseFloat(
+        styles.getPropertyValue('--gallery-row-height')
+      ) || 240;
+
+      grid.querySelectorAll('.gallery-item').forEach((item) => {
+        const photo = item.querySelector('img');
+        if (!photo?.naturalWidth || !photo.naturalHeight) return;
+
+        const aspectRatio = photo.naturalWidth / photo.naturalHeight;
+        item.style.flexGrow = String(aspectRatio);
+        item.style.flexBasis = `${targetRowHeight * aspectRatio}px`;
+      });
+    };
+
+    const scheduleLayout = () => {
+      window.cancelAnimationFrame(animationFrame);
+      animationFrame = window.requestAnimationFrame(layoutItems);
+    };
+
+    const photos = Array.from(grid.querySelectorAll('img'));
+    photos.forEach((photo) => photo.addEventListener('load', scheduleLayout));
+
+    const resizeObserver = new ResizeObserver(([entry]) => {
+      const nextWidth = entry.contentRect.width;
+      if (Math.abs(nextWidth - previousWidth) < 0.5) return;
+      previousWidth = nextWidth;
+      scheduleLayout();
+    });
+
+    resizeObserver.observe(grid);
+    scheduleLayout();
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      resizeObserver.disconnect();
+      photos.forEach((photo) => photo.removeEventListener('load', scheduleLayout));
+    };
+  }, [activeCategory]);
 
   useEffect(() => {
     if (!lightboxImage) return undefined;
@@ -186,11 +235,11 @@ export default function GalleryPage() {
             </div>
           </ScrollReveal>
 
-          <div className="gallery-grid" aria-live="polite">
+          <div ref={galleryRef} className="gallery-grid" aria-live="polite">
             {filteredImages.map((image, index) => (
               <button
                 type="button"
-                className={`gallery-item gallery-item--${image.size || 'standard'}${index === filteredImages.length - 1 ? ' gallery-item--closing' : ''}`}
+                className="gallery-item"
                 key={image.src}
                 aria-label={`Open photo: ${image.caption}`}
                 onClick={() => setLightboxIndex(index)}
@@ -203,10 +252,6 @@ export default function GalleryPage() {
                   decoding="async"
                   draggable="false"
                 />
-                <span className="gallery-item__details">
-                  <span className="gallery-item__category">{image.category}</span>
-                  <span className="gallery-item__caption">{image.caption}</span>
-                </span>
                 <span className="gallery-item__expand" aria-hidden="true">
                   <Expand size={17} strokeWidth={1.8} />
                 </span>

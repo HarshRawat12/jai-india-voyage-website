@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import HeroSection from '../components/HeroSection';
 import ScrollReveal from '../components/ScrollReveal';
 
@@ -17,7 +17,7 @@ const TEAM = [
   },
   {
     name: 'Vikas Sajwan',
-    photo: '/images/team/vikas_sajwan-jpg.webp',
+    photo: '/images/team/vikas_sajwan.webp',
     initials: 'VS',
     bio: 'A keen traveller and travel graduate, Vikas heads the operations team that helps each tailored itinerary unfold with care. He embodies the company vision — treating travel as an intimate and intellectual experience rather than a checklist of sights.',
   },
@@ -49,6 +49,16 @@ const CSR_INITIATIVES = [
     title: 'Hygiene & Education',
     desc: 'Distributing hygiene kits and supporting education programs in underserved communities we visit.',
     image: '/images/Hygiene_Empowerment.webp',
+  },
+  {
+    title: 'Sustainable Livelihood',
+    desc: 'Building resilient livelihoods through the conservation of natural resources and sustainable agricultural practices.',
+    image: '/images/Sustainable_Livelihood.webp',
+  },
+  {
+    title: 'Digital Education Drive',
+    desc: 'Expanding access to learning by supporting digital classrooms and technology-enabled education in local communities.',
+    image: '/images/Jiv_5.webp',
   },
 ];
 

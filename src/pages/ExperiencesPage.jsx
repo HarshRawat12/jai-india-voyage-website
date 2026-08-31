@@ -1,62 +1,86 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import HeroSection from '../components/HeroSection';
 import ScrollReveal from '../components/ScrollReveal';
 
 const EXPERIENCES = [
   {
-    tag: 'Heritage',
-    title: 'Royal Palace Stays',
-    desc: 'Stay amid royal heritage in converted havelis and maharaja palaces. Private dinners, cultural performances, and a closer look at centuries-old estates.',
-    image: '/images/royal_palace_stays.webp',
-  },
-  {
-    tag: 'Cultural',
-    title: 'Village & Tribal Immersion',
-    desc: 'Step into the living traditions of rural India. Share meals with Bishnoi families, witness ancient pottery-making, and dance with tribal communities in Orissa.',
-    image: '/images/orrisa.webp',
-  },
-  {
-    tag: 'Adventure',
-    title: 'Desert Camping',
-    desc: 'Experience the magic of the Thar Desert — camel safaris at sunset, star-gazing from luxury tented camps, and folk music under a blanket of stars in Jaisalmer.',
-    image: '/images/desert_camping.webp',
-  },
-  {
-    tag: 'Spiritual',
-    title: 'Sacred Journeys',
-    desc: 'From the Ganga Aarti in Haridwar to the Buddhist monasteries of Ladakh and the ancient temples of South India — embark on a journey of the soul.',
-    image: '/images/Holy-tour-to-Haridwar.webp',
-  },
-  {
-    tag: 'Homestay',
-    title: 'Authentic Homestays',
-    desc: 'Live with an Indian family in their traditional home. Cook together, learn local crafts, hear family stories, and experience the warmth of home hospitality.',
-    image: '/images/Our-homestay.webp',
+    tag: 'Culinary',
+    title: 'Private Dinner in the Thar Desert',
+    desc: 'Dine beneath the open desert sky at a table prepared just for you, surrounded by sweeping dunes, lantern light, and the stillness of the Thar.',
+    image: '/images/experiences/private-dinner-thar-desert.webp',
   },
   {
     tag: 'Heritage',
-    title: 'Fort & Temple Explorations',
-    desc: 'Discover the architectural marvels of India — from the carved temples of Khajuraho and Kailasha to the mighty forts of Gwalior, Jodhpur, and Jaipur.',
-    image: '/images/Khajuraho.webp',
-  },
-  {
-    tag: 'Cultural',
-    title: 'Cuisine & Cooking Classes',
-    desc: 'Savor India\'s rich culinary diversity. Join private cooking sessions with local chefs, explore spice markets, and dine at cherished local places.',
-    image: '/images/cuisine_cooking_classes.webp',
+    title: 'Champagne Dinner at Deogarh Mahal',
+    desc: 'Toast an unforgettable evening within a storied palace setting, where gracious hospitality, heritage ambience, and a private meal come together.',
+    image: '/images/experiences/champagne-dinner-deogarh.webp',
   },
   {
     tag: 'Adventure',
-    title: 'Wildlife Encounters',
-    desc: 'Track the elusive Bengal tiger, spot rare one-horned rhinos in Kaziranga, and witness the colorful birdlife of Bharatpur — guided by expert naturalists.',
-    image: '/images/Jungle-safari-tour.webp',
+    title: 'Jeep Safari at Dechu',
+    desc: 'Leave the main road behind on a private jeep journey through the rugged landscapes, desert settlements, and quiet countryside around Dechu.',
+    image: '/images/experiences/jeep-safari-dechu.webp',
+  },
+  {
+    tag: 'Wildlife',
+    title: 'Leopard Safari',
+    desc: 'Set out with experienced trackers across Rajasthan’s granite wilderness in search of leopards and the remarkable wildlife that shares their habitat.',
+    image: '/images/experiences/leopard-safari.webp',
   },
   {
     tag: 'Cultural',
-    title: 'Festival & Fair Tours',
-    desc: 'Time your visit to coincide with India\'s vibrant festivals — Holi, Diwali, Pushkar Camel Fair, Hornbill Festival, and more. Full of colour and joy.',
-    image: '/images/img3.webp',
+    title: 'Rabari Community Encounter',
+    desc: 'Meet members of Rajasthan’s Rabari community and gain a respectful insight into their pastoral traditions, distinctive dress, and enduring way of life.',
+    image: '/images/experiences/rabari-interaction.webp',
+  },
+  {
+    tag: 'Local Life',
+    title: 'Village Life',
+    desc: 'Slow down in the countryside, meet local families, and discover the watermills, farms, and everyday rhythms that sustain rural communities.',
+    image: '/images/experiences/village-life.webp',
+  },
+  {
+    tag: 'Artisan',
+    title: 'Local Craft Workshops',
+    desc: 'Sit beside local makers and try time-honoured skills for yourself, from shaping clay to understanding the techniques behind regional handicrafts.',
+    image: '/images/experiences/local-craft.webp',
+  },
+  {
+    tag: 'Slow Travel',
+    title: 'The Road Less Travelled',
+    desc: 'Trade familiar routes for village tracks and unhurried encounters that reveal a more personal side of India, far beyond the usual landmarks.',
+    image: '/images/experiences/road-less-travelled.webp',
+  },
+  {
+    tag: 'Heritage',
+    title: 'Hidden Heritage',
+    desc: 'Step through ancient gateways and into lesser-known monuments, where layered architecture and quiet courtyards tell stories away from the crowds.',
+    image: '/images/experiences/hidden-heritage.webp',
+  },
+  {
+    tag: 'Local Life',
+    title: 'A Local Train Journey',
+    desc: 'See the landscape and daily life unfold from a local train, sharing one of India’s most characterful ways to travel between smaller towns.',
+    image: '/images/experiences/local-train-ride.webp',
+  },
+  {
+    tag: 'City Life',
+    title: 'Rickshaw Through Jaipur',
+    desc: 'Glide through Jaipur’s lively streets by cycle rickshaw, taking in colourful markets, historic façades, and the city’s everyday energy at street level.',
+    image: '/images/experiences/rickshaw-ride-01.webp',
+  },
+  {
+    tag: 'City Life',
+    title: 'Old City Rickshaw Ride',
+    desc: 'Travel at an easy pace through the old city’s crowded lanes and hidden corners, with time to notice the details that pass too quickly by car.',
+    image: '/images/experiences/rickshaw-ride-02.webp',
+  },
+  {
+    tag: 'Private Touring',
+    title: 'Private Moments in the Wild',
+    desc: 'Pause between safari drives for an intimate moment in the landscape, thoughtfully arranged so the journey feels entirely your own.',
+    image: '/images/experiences/private-moment.webp',
   },
 ];
 
@@ -86,11 +110,11 @@ export default function ExperiencesPage() {
           </ScrollReveal>
 
           <div className="exp-grid">
-            {EXPERIENCES.map((exp, i) => (
-              <ScrollReveal key={i}>
+            {EXPERIENCES.map((exp) => (
+              <ScrollReveal key={exp.title}>
                 <div className="exp-card">
                   <div className="exp-card__img-wrap">
-                    <img src={exp.image} alt={exp.title} loading="lazy" />
+                    <img src={exp.image} alt={exp.title} loading="lazy" decoding="async" />
                   </div>
                   <div className="exp-card__body">
                     <span className="exp-card__tag">{exp.tag}</span>
