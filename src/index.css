@@ -391,7 +391,7 @@ p {
 .navbar__links {
   display: flex;
   align-items: center;
-  gap: var(--space-xl);
+  gap: clamp(0.75rem, 1.6vw, var(--space-xl));
 }
 
 .navbar__link {
@@ -427,6 +427,21 @@ p {
 .navbar__cta {
   padding: 0.6rem 1.4rem;
   font-size: 0.8rem;
+}
+
+.navbar__brochure {
+  gap: 0.4rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(200, 169, 110, 0.75);
+  color: var(--color-secondary-light);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.navbar__brochure:hover {
+  color: var(--color-primary-dark);
+  background: var(--color-secondary);
+  transform: translateY(-2px);
 }
 
 /* Mobile Menu Toggle */
@@ -2601,18 +2616,21 @@ a.contact-panel__value:hover {
 
   .navbar__links {
     display: none;
-    position: fixed;
-    top: var(--navbar-height);
+    position: absolute;
+    top: 100%;
     left: 0;
     right: 0;
-    bottom: 0;
+    width: 100%;
+    height: calc(100dvh - var(--navbar-height));
     flex-direction: column;
     background: rgba(15, 26, 20, 0.98);
     backdrop-filter: blur(20px);
-    padding: var(--space-2xl);
-    gap: var(--space-lg);
+    padding: clamp(1.25rem, 4vh, var(--space-2xl));
+    gap: clamp(0.75rem, 2.3vh, var(--space-lg));
     align-items: center;
     justify-content: center;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .navbar__links--open {
@@ -2635,6 +2653,11 @@ a.contact-panel__value:hover {
 
   .navbar__links--open .navbar__cta {
     display: inline-flex;
+  }
+
+  .navbar__brochure {
+    padding: 0.65rem 1.2rem;
+    font-size: 0.85rem;
   }
 
   .hero__title {
@@ -2662,6 +2685,13 @@ a.contact-panel__value:hover {
 
   .exp-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Portrait source images need a higher focal point on narrow cards. Keeping
+     the compact card height while moving the crop upward preserves faces and
+     avoids turning each mobile card into a full-screen photograph. */
+  .exp-card__img-wrap img {
+    object-position: center 30%;
   }
 
   .hero__actions {

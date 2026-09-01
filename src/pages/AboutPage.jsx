@@ -10,22 +10,22 @@ const TEAM = [
     bio: "Educated in Paris and a psychology scholar in Delhi, Ashish earned a distinguished scholarship at the University of Angers, France. A licensed guide of over two decades, he is part historian, part storyteller — a living archive of India's cultures, traditions, and artisanal heritage.",
   },
   {
-    name: 'Raj Vir Mittal',
+    name: 'Divya Mittal',
+    photo: '/images/team/divya_mittal.webp',
+    initials: 'DM',
+    bio: "Divya's passion for cooking is woven into the guest experience — private lunches, intimate dinners and hosted cooking classes that reflect her talent and warmth. She also oversees the company's accounts, bringing the same precision to its finances.",
+  },
+  {
+    name: 'Raj Veer Mittal',
     photo: '/images/team/raj_vir_mittal.webp',
     initials: 'RM',
-    bio: 'After a decade in Europe, Raj Vir introduced "Namastey India" to France and Italy. A photographer and professionally qualified travel writer, he is the mentor behind Jai India Voyage and an authority on India\'s tribes, cuisines and hidden corners.',
+    bio: 'After a decade in Europe, Raj Veer introduced "Namastey India" to France and Italy. A photographer and professionally qualified travel writer, he is the mentor behind Jai India Voyage and an authority on India\'s tribes, cuisines and hidden corners.',
   },
   {
     name: 'Vikas Sajwan',
     photo: '/images/team/vikas_sajwan.webp',
     initials: 'VS',
     bio: 'A keen traveller and travel graduate, Vikas heads the operations team that helps each tailored itinerary unfold with care. He embodies the company vision — treating travel as an intimate and intellectual experience rather than a checklist of sights.',
-  },
-  {
-    name: 'Divya Mittal',
-    photo: '/images/team/divya_mittal.webp',
-    initials: 'DM',
-    bio: "Divya's passion for cooking is woven into the guest experience — private lunches, intimate dinners and hosted cooking classes that reflect her talent and warmth. She also oversees the company's accounts, bringing the same precision to its finances.",
   },
 ];
 
